@@ -19,7 +19,7 @@ init:
 	@echo ""
 	@echo ""
 	@echo ""
-	@echo "$(COLOR_GREEN)Welcome to yazi.nvim development! 🚀$(COLOR_RESET)"
+	@echo "$(COLOR_GREEN)Welcome to my-nvim-micro-plugins.nvim development! 🚀$(COLOR_RESET)"
 	@echo "$(COLOR_BLUE_)Next, run one of these commands to get started:$(COLOR_RESET)"
 	@echo "$(COLOR_YELLO)  make test$(COLOR_RESET)"
 	@echo "$(COLOR_WHITE)    Run all tests$(COLOR_RESET)"
@@ -34,7 +34,7 @@ init:
 	@echo "$(COLOR_WHITE)    Reformat all code$(COLOR_RESET)"
 
 lint:
-	selene ./lua/ ./spec/ ./integration-tests/test-environment/config-modifications
+	selene ./lua/ ./spec/ ./integration-tests/
 	@if grep -r -e "#focus" --include \*.lua ./spec/; then \
 			echo "\n"; \
 			echo "Error: ${COLOR_GREEN}#focus${COLOR_RESET} tags found in the codebase.\n"; \

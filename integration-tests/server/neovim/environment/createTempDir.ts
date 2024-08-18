@@ -76,7 +76,6 @@ export async function createTempDir(): Promise<TestDirectory> {
     execSync(`cp -r "./test-environment/dir with spaces" ${dir}/`)
     execSync(`cp -r ./test-environment/subdirectory ${dir}/`)
     execSync(`cp -r ./test-environment/other-subdirectory ${dir}/`)
-    execSync(`cp -r ./test-environment/config-modifications ${dir}/`)
     execSync(`cp -r ./test-environment/routes ${dir}/`)
     console.log(`Created test directory at ${dir}`)
 

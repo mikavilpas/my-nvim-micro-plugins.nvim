@@ -1,8 +1,10 @@
--- checkhealth implementation
-
 return {
   check = function()
     vim.health.start("my-nvim-micro-plugins")
+
+    local plugin = require("my-nvim-micro-plugins.main")
+    local msg = string.format("Running version %s", plugin.version)
+    vim.health.info(msg)
 
     if vim.fn.executable("fd") ~= 1 then
       vim.health.warn("fd not found on PATH")
