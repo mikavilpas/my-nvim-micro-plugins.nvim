@@ -18,6 +18,8 @@ describe("the healthcheck", () => {
       },
     )
 
+    cy.contains(`found fd version { "fd 9.0.0" }`)
+
     cy.contains("ERROR").should("not.exist")
   })
 })

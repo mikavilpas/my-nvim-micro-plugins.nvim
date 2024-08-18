@@ -1,3 +1,18 @@
+--- @param app_name string
+--- @param input string
+local function parse_version(app_name, input)
+  local version = input:match("(%w+%.%w+%.%w+)")
+  if version == nil then
+    error(string.format("could not parse '%s' version from input", app_name))
+  end
+
+  vim.health.info(
+    string.format("found `%s` version `%s`", app_name, vim.inspect(version))
+  )
+
+  return vim.version.parse(version)
+end
+
 return {
   check = function()
     vim.health.start("my-nvim-micro-plugins")
@@ -8,6 +23,12 @@ return {
 
     if vim.fn.executable("fd") ~= 1 then
       vim.health.warn("fd not found on PATH")
+    else
+      local fd_version = parse_version("fd", vim.fn.system("fd --version"))
+
+      if not vim.version.ge(fd_version, "8.3.1") then
+        vim.health.warn("fd version is less than 8.3.1")
+      end
     end
 
     if vim.fn.executable("rg") ~= 1 then
