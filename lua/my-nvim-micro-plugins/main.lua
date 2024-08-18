@@ -4,7 +4,15 @@ local M = {}
 
 M.version = "1.0.0" -- x-release-please-version
 
-function M.setup() end
+---@class (exact) my-nvim-micro-plugins.Config
+---@field realpath_command? string the realpath (linux) / grealpath (osx) command to use on your system
+M.config = {
+  realpath_command = "grealpath",
+}
+
+function M.setup(config)
+  M.config = vim.tbl_extend("force", M.config, config or {})
+end
 
 -- Copy the relative path of the selected file to the system clipboard.
 -- Can only be used in a file picker.
@@ -44,7 +52,7 @@ end
 function M.relative_path_to_file(current_file_dir, selected_file)
   local telescopeUtils = require("telescope.utils")
   local stdout, ret, stderr = telescopeUtils.get_os_command_output({
-    "grealpath",
+    M.config.realpath_command,
     "--relative-to",
     current_file_dir,
     selected_file,

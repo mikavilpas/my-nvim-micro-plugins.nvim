@@ -14,8 +14,14 @@ return {
       vim.health.warn("rg not found on PATH")
     end
 
-    if vim.fn.executable("grealpath") ~= 1 then
-      vim.health.warn("grealpath not found on PATH")
+    local realpath_command = plugin.config.realpath_command
+    if vim.fn.executable(realpath_command) ~= 1 then
+      vim.health.warn(
+        string.format(
+          "realpath_command '%s' not found on PATH",
+          realpath_command
+        )
+      )
     end
 
     vim.health.ok("my-nvim-micro-plugins")
