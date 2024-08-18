@@ -19,7 +19,9 @@ jobs:
       - name: Set up dependencies
         run: |
           # ripgrep is a telescope dependency
-          sudo apt-get install ripgrep
+          # sudo apt-get install ripgrep
+          curl -LJO "https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb"
+          sudo dpkg -i ripgrep_14.1.0-1_amd64.deb || sudo apt-get install -f
           echo "ripgrep is installed at $(which rg) in version $(rg --version)"
 
           # fd is used for searching files
