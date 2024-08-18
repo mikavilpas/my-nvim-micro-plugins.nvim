@@ -18,7 +18,9 @@ describe("the healthcheck", () => {
       },
     )
 
-    cy.contains(`found fd version { "fd 9.0.0" }`)
+    cy.contains("found 'fd' version")
+    cy.contains("found 'rg' version")
+    cy.contains("found realpath")
 
     cy.contains("ERROR").should("not.exist")
   })

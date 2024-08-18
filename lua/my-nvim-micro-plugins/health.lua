@@ -7,7 +7,7 @@ local function parse_version(app_name, input)
   end
 
   vim.health.info(
-    string.format("found `%s` version `%s`", app_name, vim.inspect(version))
+    string.format("found '%s' version `%s`", app_name, vim.inspect(version))
   )
 
   return vim.version.parse(version)
@@ -22,22 +22,22 @@ return {
     vim.health.info(msg)
 
     if vim.fn.executable("fd") ~= 1 then
-      vim.health.warn("fd not found on PATH")
+      vim.health.warn("'fd' not found on PATH")
     else
       local fd_version = parse_version("fd", vim.fn.system("fd --version"))
 
       if not vim.version.ge(fd_version, "8.3.1") then
-        vim.health.warn("fd version is less than 8.3.1")
+        vim.health.warn("'fd' version is less than 8.3.1")
       end
     end
 
     if vim.fn.executable("rg") ~= 1 then
-      vim.health.warn("rg not found on PATH")
+      vim.health.warn("'rg' not found on PATH")
     else
       local rg_version = parse_version("rg", vim.fn.system("rg --version"))
 
       if not vim.version.ge(rg_version, "13.0.0") then
-        vim.health.warn("rg version is less than 13.0.0")
+        vim.health.warn("'rg' version is less than 13.0.0")
       end
     end
 
@@ -49,6 +49,8 @@ return {
           realpath_command
         )
       )
+    else
+      vim.health.info(string.format("found realpath as '%s'", realpath_command))
     end
 
     vim.health.ok("my-nvim-micro-plugins")
