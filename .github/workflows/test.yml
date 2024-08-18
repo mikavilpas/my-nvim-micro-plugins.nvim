@@ -23,7 +23,7 @@ jobs:
           echo "ripgrep is installed at $(which rg) in version $(rg --version)"
 
           # fd is used for searching files
-          apt-get install fd-find
+          sudo apt-get install fd-find
           ln -s $(which fdfind) ~/.local/bin/fd
           echo "~/.local/bin/" >> $GITHUB_PATH
           echo "fd is installed at $(which fd) in version $(fd --version)"
