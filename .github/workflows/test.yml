@@ -23,6 +23,7 @@ jobs:
           echo "ripgrep is installed at $(which rg) in version $(rg --version)"
 
           apt-get install fd-find
+          sudo ln -s $(which fdfind) /usr/local/bin/fd
           echo "fd is installed at $(which fd) in version $(fd --version)"
 
           # realpath is used to resolve relative paths
