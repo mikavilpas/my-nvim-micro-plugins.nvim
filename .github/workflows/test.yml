@@ -19,9 +19,11 @@ jobs:
       - name: Set up dependencies
         run: |
           # ripgrep is a telescope dependency
-          which rg || {
-            sudo apt-get install ripgrep
-          }
+          sudo apt-get install ripgrep
+          echo "ripgrep is installed at $(which rg) in version $(rg --version)"
+
+          apt-get install fd-find
+          echo "fd is installed at $(which fd) in version $(fd --version)"
 
           # realpath is used to resolve relative paths
           which realpath || {
@@ -29,6 +31,7 @@ jobs:
             echo "realpath is not installed, but it should be part of GNU coreutils and included in Ubuntu"
             exit 1
           }
+          echo "realpath is installed at $(which realpath) in version $(realpath --version)"
 
       - name: Run tests
         uses: nvim-neorocks/nvim-busted-action@v1.0.1
