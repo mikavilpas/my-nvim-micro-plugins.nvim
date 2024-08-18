@@ -39,10 +39,10 @@ vim.o.swapfile = false
 -- install the following plugins
 ---@type LazySpec
 local plugins = {
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim" },
   {
     "nvim-telescope/telescope.nvim",
-    lazy = true,
+    event = "VeryLazy",
     keys = {
       {
         "<down>",
