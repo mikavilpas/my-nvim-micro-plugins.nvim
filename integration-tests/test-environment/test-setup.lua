@@ -2,8 +2,6 @@
 -- integration tests. It should be executed before running the tests.
 
 ---@module "lazy"
----@module "yazi"
----@module "catppuccin"
 
 -- DO NOT change the paths and don't remove the colorscheme
 local root = vim.fn.fnamemodify("./.repro", ":p")
@@ -22,7 +20,7 @@ if not (vim.uv).fs_stat(lazypath) then
     "git",
     "clone",
     "--filter=blob:none",
-    "--branch=v11.12.0",
+    "--branch=v11.14.1",
     lazyrepo,
     lazypath,
   })
@@ -41,41 +39,14 @@ vim.o.swapfile = false
 -- install the following plugins
 ---@type LazySpec
 local plugins = {
-  {
-    "mikavilpas/yazi.nvim",
-    -- for tests, always use the code from this repository
-    dir = "../..",
-    event = "VeryLazy",
-    keys = {
-      { "<up>", "<cmd>Yazi<cr>" },
-      { "<c-up>", "<cmd>Yazi toggle<cr>" },
-    },
-    ---@type YaziConfig
-    opts = {
-      open_for_directories = true,
-      -- use different register than the system clipboard for yanking, so that
-      -- the developers can work on the code while the tests run without any
-      -- disturbances
-      clipboard_register = '"',
-      -- allows logging debug data, which can be shown in CI when cypress tests fail
-      log_level = vim.log.levels.DEBUG,
-      integrations = {
-        grep_in_directory = function(directory)
-          require("telescope.builtin").live_grep({
-            -- disable previewer to be able to see the full directory name. The
-            -- tests can make assertions on this path.
-            previewer = false,
-            search = "",
-            prompt_title = "Grep in " .. directory,
-            cwd = directory,
-          })
-        end,
-      },
-    },
-  },
+  { "nvim-lua/plenary.nvim", lazy = true },
   { "nvim-telescope/telescope.nvim", lazy = true },
+  {
+    "mikavilpas/my-nvim-micro-plugins.nvim",
+    event = "VeryLazy",
+    dir = "../../",
+  },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "https://github.com/MagicDuck/grug-far.nvim", opts = {} },
 }
 require("lazy").setup({ spec = plugins })
 

@@ -19,20 +19,6 @@ export type TestDirectoryFile = z.infer<typeof testDirectoryFile>
 export const integrationTestFile = z.union([z.literal("."), testDirectoryFile])
 export type IntegrationTestFile = z.infer<typeof integrationTestFile>
 
-export const startupScriptModification = z.enum([
-  "modify_yazi_config_and_add_hovered_buffer_background.lua",
-  "use_light_neovim_colorscheme.lua",
-  "modify_yazi_config_and_set_help_key.lua",
-  "disable_a_keybinding.lua",
-  "notify_hover_events.lua",
-  "modify_yazi_config_and_highlight_buffers_in_same_directory.lua",
-  "modify_yazi_config_and_open_multiple_files.lua",
-  "add_command_to_count_open_buffers.lua",
-])
-export type StartupScriptModification = z.infer<
-  typeof startupScriptModification
->
-
 export type MultipleFiles = {
   openInVerticalSplits: IntegrationTestFile[]
 }
@@ -44,7 +30,6 @@ export const multipleFiles = z.object({
 /** The arguments given from the tests to send to the server */
 export const startNeovimArguments = z.object({
   filename: z.union([integrationTestFile, multipleFiles]).optional(),
-  startupScriptModifications: z.array(startupScriptModification).optional(),
 })
 export type StartNeovimArguments = z.infer<typeof startNeovimArguments>
 
