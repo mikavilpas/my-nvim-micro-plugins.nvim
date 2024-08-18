@@ -11,9 +11,7 @@ M.config = {
     or "realpath",
 }
 
-function M.setup(config)
-  M.config = vim.tbl_extend("force", M.config, config or {})
-end
+function M.setup() end
 
 -- Copy the relative path of the selected file to the system clipboard.
 -- Can only be used in a file picker.

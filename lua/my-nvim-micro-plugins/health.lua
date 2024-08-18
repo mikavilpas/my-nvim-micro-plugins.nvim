@@ -33,10 +33,16 @@ return {
 
     if vim.fn.executable("rg") ~= 1 then
       vim.health.warn("rg not found on PATH")
+    else
+      local rg_version = parse_version("rg", vim.fn.system("rg --version"))
+
+      if not vim.version.ge(rg_version, "13.0.0") then
+        vim.health.warn("rg version is less than 13.0.0")
+      end
     end
 
     local realpath_command = plugin.config.realpath_command
-    if vim.fn.executable(realpath_command) ~= 1 then
+    if (not realpath_command) or vim.fn.executable(realpath_command) ~= 1 then
       vim.health.warn(
         string.format(
           "realpath_command '%s' not found on PATH",
