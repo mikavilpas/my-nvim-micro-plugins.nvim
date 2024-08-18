@@ -22,8 +22,9 @@ jobs:
           sudo apt-get install ripgrep
           echo "ripgrep is installed at $(which rg) in version $(rg --version)"
 
+          # fd is used for searching files
           apt-get install fd-find
-          sudo ln -s $(which fdfind) /usr/local/bin/fd
+          echo "$(which fdfind)" >> $GITHUB_PATH
           echo "fd is installed at $(which fd) in version $(fd --version)"
 
           # realpath is used to resolve relative paths
