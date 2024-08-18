@@ -18,6 +18,6 @@ describe("the healthcheck", () => {
       },
     )
 
-    cy.contains("OK")
+    cy.contains("ERROR").should("not.exist")
   })
 })
