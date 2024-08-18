@@ -18,6 +18,22 @@ describe("the healthcheck", () => {
       },
     )
 
-    cy.contains("OK")
+    cy.contains("found 'fd' version")
+    cy.contains("found 'rg' version")
+    cy.contains("found realpath")
+
+    cy.contains("ERROR").should("not.exist")
+  })
+
+  it("can run the :healthcheck for telescope", () => {
+    cy.visit("http://localhost:5173")
+    cy.startNeovim()
+
+    // wait until text on the start screen is visible
+    cy.contains("If you see this text, Neovim is ready!")
+
+    cy.typeIntoTerminal(":checkhealth telescope{enter}")
+
+    cy.contains("ERROR").should("not.exist")
   })
 })
