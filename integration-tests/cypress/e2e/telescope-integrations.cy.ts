@@ -99,7 +99,7 @@ describe("telescope integration", () => {
         cy.contains("Live grep in").should("not.exist")
 
         // The relative path should be copied to the clipboard. Paste it
-        cy.typeIntoTerminal(`V"*p`)
+        cy.typeIntoTerminal(`V"zp`)
 
         cy.contains("../../../cypress/e2e/telescope-integrations.cy.ts")
 
