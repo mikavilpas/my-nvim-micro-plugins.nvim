@@ -24,7 +24,7 @@ describe("my_copy_relative_path integrations", () => {
     })
   })
 
-  it.only("can copy the relative path to the current telescope grep search result", () => {
+  it("can copy the relative path to the current telescope grep search result", () => {
     //
     cy.visit("http://localhost:5173")
     cy.startNeovim().then((_dir) => {
