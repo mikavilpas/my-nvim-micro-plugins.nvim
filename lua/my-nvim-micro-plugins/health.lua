@@ -17,7 +17,7 @@ return {
   check = function()
     vim.health.start("my-nvim-micro-plugins")
 
-    local plugin = require("my-nvim-micro-plugins.main")
+    local plugin = require("my-nvim-micro-plugins")
     local msg = string.format("Running version %s", plugin.version)
     vim.health.info(msg)
 

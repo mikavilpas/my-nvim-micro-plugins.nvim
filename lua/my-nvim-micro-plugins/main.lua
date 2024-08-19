@@ -4,8 +4,6 @@ local plugin = require("my-nvim-micro-plugins")
 
 local M = {}
 
-M.version = "1.0.0" -- x-release-please-version
-
 -- Copy the relative path of the selected file to the system clipboard.
 -- Can only be used in a file picker.
 function M.my_copy_relative_path(prompt_bufnr)

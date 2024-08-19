@@ -1,5 +1,7 @@
 local M = {}
 
+M.version = "1.0.0" -- x-release-please-version
+
 ---@class (exact) my-nvim-micro-plugins.Config
 ---@field realpath_command? string the realpath (linux) / grealpath (osx) command to use on your system
 ---@field clipboard_register? string the register to use for the clipboard, defaults to "*"
