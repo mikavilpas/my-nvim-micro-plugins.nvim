@@ -80,5 +80,34 @@ describe("telescope integration", () => {
         cy.contains("../../routes/posts.$postId/adjacent-file.txt")
       })
     })
+
+    it("can copy the relative path to the current telescope grep search result", () => {
+      //
+      cy.visit("http://localhost:5173")
+      cy.startNeovim().then((_dir) => {
+        // wait until text on the start screen is visible
+        cy.contains("If you see this text, Neovim is ready!")
+
+        cy.typeIntoTerminal(" /")
+        cy.contains("Live grep in")
+        cy.typeIntoTerminal("hello from the test") // this files this very test file
+
+        cy.contains("telescope-integrations.cy.ts")
+
+        // copy the relative path
+        cy.typeIntoTerminal("{control+y}")
+        cy.contains("Live grep in").should("not.exist")
+
+        // The relative path should be copied to the clipboard. Paste it
+        cy.typeIntoTerminal(`V"zp`)
+
+        cy.contains("../../../cypress/e2e/telescope-integrations.cy.ts")
+
+        // line numbers should be removed
+        cy.contains(
+          "../../../cypress/e2e/telescope-integrations.cy.ts:",
+        ).should("not.exist")
+      })
+    })
   })
 })

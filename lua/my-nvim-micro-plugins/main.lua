@@ -1,17 +1,8 @@
 ---@module "plenary"
 
+local plugin = require("my-nvim-micro-plugins")
+
 local M = {}
-
-M.version = "1.0.0" -- x-release-please-version
-
----@class (exact) my-nvim-micro-plugins.Config
----@field realpath_command? string the realpath (linux) / grealpath (osx) command to use on your system
-M.config = {
-  realpath_command = vim.uv.os_uname().sysname == "Darwin" and "grealpath"
-    or "realpath",
-}
-
-function M.setup() end
 
 -- Copy the relative path of the selected file to the system clipboard.
 -- Can only be used in a file picker.
@@ -31,10 +22,10 @@ function M.my_copy_relative_path(prompt_bufnr)
     error("no selection, cannot continue")
   end
 
-  local selected_file = Path:new(selection.cwd, selection.value):__tostring()
+  local selected_file = Path:new(selection.cwd, selection.filename):__tostring()
 
   local relative_path = M.relative_path_to_file(current_file_dir, selected_file)
-  vim.fn.setreg("*", relative_path)
+  vim.fn.setreg(plugin.config.clipboard_register, relative_path)
   -- display a message with the relative path
   vim.api.nvim_echo(
     { { "Copied: ", "Normal" }, { relative_path, "String" } },
@@ -51,7 +42,7 @@ end
 function M.relative_path_to_file(current_file_dir, selected_file)
   local telescopeUtils = require("telescope.utils")
   local stdout, ret, stderr = telescopeUtils.get_os_command_output({
-    M.config.realpath_command,
+    plugin.config.realpath_command,
     "--relative-to",
     current_file_dir,
     selected_file,

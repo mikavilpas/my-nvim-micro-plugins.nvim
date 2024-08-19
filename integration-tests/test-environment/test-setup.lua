@@ -92,6 +92,12 @@ local plugins = {
     "mikavilpas/my-nvim-micro-plugins.nvim",
     event = "VeryLazy",
     dir = "../../",
+    ---@type my-nvim-micro-plugins.Config
+    opts = {
+      -- in github actions, we don't have access to the clipboard, so just use
+      -- some other register
+      clipboard_register = "z",
+    },
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
