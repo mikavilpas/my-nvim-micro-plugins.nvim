@@ -31,7 +31,7 @@ function M.my_copy_relative_path(prompt_bufnr)
     error("no selection, cannot continue")
   end
 
-  local selected_file = Path:new(selection.cwd, selection.value):__tostring()
+  local selected_file = Path:new(selection.cwd, selection.filename):__tostring()
 
   local relative_path = M.relative_path_to_file(current_file_dir, selected_file)
   vim.fn.setreg("*", relative_path)
