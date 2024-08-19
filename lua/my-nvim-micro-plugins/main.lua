@@ -1,4 +1,5 @@
 ---@module "plenary"
+---@module "telescope"
 
 local plugin = require("my-nvim-micro-plugins")
 
@@ -15,23 +16,49 @@ function M.my_copy_relative_path(prompt_bufnr)
   local Path = require("plenary.path")
   local action_state = require("telescope.actions.state")
   local actions = require("telescope.actions")
+  local picker = action_state.get_current_picker(prompt_bufnr)
 
-  local selection = action_state.get_selected_entry()
+  local multi_selection = picker:get_multi_selection()
 
-  if selection == nil then
-    error("no selection, cannot continue")
+  local selected_files = nil
+
+  if multi_selection ~= nil and #multi_selection > 0 then
+    selected_files = vim
+      .iter(multi_selection)
+      :map(function(entry)
+        assert(
+          type(entry) == "table",
+          "entry is not a table - it's " .. vim.inspect(entry)
+        )
+        local filename = entry[1]
+        return Path:new(entry.cwd, filename):__tostring()
+      end)
+      :totable()
+  else
+    -- single selection
+    local selection = action_state.get_selected_entry()
+
+    if selection == nil then
+      error("no selection, cannot continue")
+    end
+
+    selected_files =
+      { Path:new(selection.cwd, selection.filename):__tostring() }
   end
 
-  local selected_file = Path:new(selection.cwd, selection.filename):__tostring()
+  ---@type string[]
+  local relative_paths = {}
+  for _, selected_file in ipairs(selected_files) do
+    local relative_path =
+      M.relative_path_to_file(current_file_dir, selected_file)
+    table.insert(relative_paths, relative_path)
+  end
+  local text = table.concat(relative_paths, "\n")
 
-  local relative_path = M.relative_path_to_file(current_file_dir, selected_file)
-  vim.fn.setreg(plugin.config.clipboard_register, relative_path)
-  -- display a message with the relative path
-  vim.api.nvim_echo(
-    { { "Copied: ", "Normal" }, { relative_path, "String" } },
-    true,
-    {}
-  )
+  vim.fn.setreg(plugin.config.clipboard_register, text)
+
+  -- display a message with the relative paths
+  -- vim.api.nvim_echo({ { "Copied: ", "Normal" }, { text, "String" } }, true, {})
 
   actions.close(prompt_bufnr)
 end
