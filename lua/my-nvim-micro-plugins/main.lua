@@ -23,7 +23,6 @@ function M.my_copy_relative_path(prompt_bufnr)
   local selected_files = nil
 
   if multi_selection ~= nil and #multi_selection > 0 then
-    print(vim.inspect(multi_selection))
     selected_files = vim
       .iter(multi_selection)
       :map(function(entry)
