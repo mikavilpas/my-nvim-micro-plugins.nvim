@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.1.0...v1.2.0) (2024-08-20)
+
+
+### Features
+
+* support copying relative path of multiple telescope grep results ([#11](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/issues/11)) ([760cbe3](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/760cbe3d8250c637cf67aa26f6bdeef4868e5131))
+
 ## [1.1.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.0.0...v1.1.0) (2024-08-20)
 
 
