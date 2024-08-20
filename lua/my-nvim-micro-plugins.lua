@@ -1,6 +1,6 @@
 local M = {}
 
-M.version = "1.0.0" -- x-release-please-version
+M.version = "1.1.0" -- x-release-please-version
 
 ---@class (exact) my-nvim-micro-plugins.Config
 ---@field realpath_command? string the realpath (linux) / grealpath (osx) command to use on your system
