@@ -30,7 +30,7 @@ function M.my_copy_relative_path(prompt_bufnr)
           type(entry) == "table",
           "entry is not a table - it's " .. vim.inspect(entry)
         )
-        local filename = entry[1]
+        local filename = entry.filename
         return Path:new(entry.cwd, filename):__tostring()
       end)
       :totable()
