@@ -1,5 +1,5 @@
 import { flavors } from "@catppuccin/palette"
-import { rgbify } from "./color-utils"
+import { hasColor, rgbify } from "./color-utils"
 
 const darkTheme = flavors.macchiato.colors
 
@@ -69,21 +69,23 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("Live grep in")
       cy.typeIntoTerminal("file.txt$") // this very test file
 
-      cy.contains(dir.contents["other-subdirectory/other-sub-file.txt"].name)
-      cy.contains(dir.contents["routes/posts.$postId/adjacent-file.txt"].name)
+      hasColor(
+        dir.contents["other-subdirectory/other-sub-file.txt"].name,
+        darkTheme.text.rgb,
+      )
+      hasColor(
+        dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
+        darkTheme.text.rgb,
+      )
 
       // select the files and verify they are selected
       cy.typeIntoTerminal("{control+i}")
-      cy.contains(
+      hasColor(
         dir.contents["other-subdirectory/other-sub-file.txt"].name,
-      ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
-
-      cy.typeIntoTerminal("{control+i}")
-      cy.contains("adjacent-").should(
-        "have.css",
-        "color",
-        rgbify(darkTheme.yellow.rgb),
+        darkTheme.yellow.rgb,
       )
+      cy.typeIntoTerminal("{control+i}")
+      hasColor("adjacent-", darkTheme.yellow.rgb)
 
       // copy the relative path
       cy.typeIntoTerminal("{control+y}")
