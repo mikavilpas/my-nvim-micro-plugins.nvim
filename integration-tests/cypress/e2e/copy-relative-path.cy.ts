@@ -58,7 +58,7 @@ describe("my_copy_relative_path integrations", () => {
     })
   })
 
-  it("can copy the relative path to the multiple telescope grep search results", () => {
+  it("can copy the relative path to multiple telescope grep search results", () => {
     //
     cy.visit("http://localhost:5173")
     cy.startNeovim().then((dir) => {
@@ -80,11 +80,11 @@ describe("my_copy_relative_path integrations", () => {
 
       // select the files and verify they are selected
       cy.typeIntoTerminal("{control+i}")
+      cy.typeIntoTerminal("{control+i}")
       hasColor(
         dir.contents["other-subdirectory/other-sub-file.txt"].name,
         darkTheme.yellow.rgb,
       )
-      cy.typeIntoTerminal("{control+i}")
       hasColor("adjacent-", darkTheme.yellow.rgb)
 
       // copy the relative path
@@ -129,10 +129,10 @@ describe("my_copy_relative_path integrations", () => {
       // Select the files with telescope. They should have a new color after
       // this to indicate they are selected
       cy.typeIntoTerminal("{control+i}")
+      cy.typeIntoTerminal("{control+i}")
       cy.contains(
         dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
-      cy.typeIntoTerminal("{control+i}")
       cy.contains(
         dir.contents["routes/posts.$postId/should-be-excluded-file.txt"].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
