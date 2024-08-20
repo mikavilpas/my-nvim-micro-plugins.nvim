@@ -1,5 +1,5 @@
 {
-  "name": "@yazi.nvim/integration-tests",
+  "name": "@my-nvim-micro-plugins.nvim/integration-tests",
   "version": "0.0.0",
   "private": true,
   "type": "module",
