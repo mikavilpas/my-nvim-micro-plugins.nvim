@@ -85,17 +85,23 @@ function M.relative_path_to_file(current_file_dir, selected_file)
   return relative_path
 end
 
----@return string?
-function M.find_project_root()
-  local current_file_dir = vim.fn.expand("%:p:h")
+---@param current_file_dir? string
+function M.find_project_root(current_file_dir)
+  current_file_dir = current_file_dir or vim.fn.expand("%:p:h")
   local stdout, ret = require("telescope.utils").get_os_command_output(
     { "git", "rev-parse", "--show-toplevel" },
     current_file_dir
   )
   if ret ~= 0 then
+    if current_file_dir:match(".git$") then
+      return M.find_project_root(vim.fs.joinpath(current_file_dir, ".."))
+    else
+      return current_file_dir
+    end
     error("could not determine top level git directory")
   end
   local cwd = stdout[1]
+  assert(type(cwd) == "string", "cwd is not a string")
 
   return cwd
 end
