@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.2.0...v1.3.0) (2024-08-27)
+
+
+### Features
+
+* can find the root when in a .git directory ([#19](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/issues/19)) ([0ba1e14](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/0ba1e143d831342dea6ed2315d1303037ec443b9))
+
 ## [1.2.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.1.0...v1.2.0) (2024-08-20)
 
 
