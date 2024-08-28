@@ -1,4 +1,5 @@
 local main = require("my-nvim-micro-plugins.main")
+local assert = require("luassert")
 
 describe("comment_line", function()
   before_each(function()
