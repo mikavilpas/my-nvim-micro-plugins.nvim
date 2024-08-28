@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.3.0...v1.4.0) (2024-08-28)
+
+
+### Features
+
+* add comment_line ([#23](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/issues/23)) ([e129677](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/e129677c9bbb7957cde8cadae50e850f39402b08))
+
 ## [1.3.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.2.0...v1.3.0) (2024-08-27)
 
 
