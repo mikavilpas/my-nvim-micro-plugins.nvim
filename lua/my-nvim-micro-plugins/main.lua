@@ -172,4 +172,23 @@ function M.my_live_grep(options)
   })
 end
 
+-- comment the current line, copy it, and keep the cursor in the same position
+--
+-- -- hello, |world
+-- hello, |world
+function M.comment_line()
+  local current_column = vim.fn.virtcol(".")
+  -- yank the current line and paste it below
+  vim.cmd("normal yypk")
+
+  -- comment the current line and indent
+  vim.cmd("normal gccV=")
+
+  -- move the cursor down
+  vim.cmd("normal j")
+
+  -- move the cursor to the same column as before
+  vim.cmd("normal " .. current_column .. "|")
+end
+
 return M
