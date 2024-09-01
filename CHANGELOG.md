@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.4.0...v1.5.0) (2024-09-01)
+
+
+### Features
+
+* add some utilities for multicursor.nvim ([#27](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/issues/27)) ([0c3066e](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/0c3066eb219e782a4f8c5524de96c3010ef9523c))
+
 ## [1.4.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.3.0...v1.4.0) (2024-08-28)
 
 
