@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.5.0...v1.5.1) (2024-09-02)
+
+
+### Bug Fixes
+
+* multicursor.nvim is not lazy loaded ([10cb451](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/10cb4514a90449cf41c9281e009d9a4e48a27de0))
+
 ## [1.5.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.4.0...v1.5.0) (2024-09-01)
 
 
