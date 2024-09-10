@@ -1,1 +1,6 @@
-std="vim"
+std = "vim"
+exclude = [
+  "integration-tests/test-environment/.repro/*",
+  "integration-tests/test-environment/multicursor-file.lua",
+  "integration-tests/test-environment/test-setup.lua",
+]

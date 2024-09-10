@@ -42,6 +42,11 @@ export async function createTempDir(): Promise<TestDirectory> {
           stem: "file",
           extension: ".txt",
         },
+        "multicursor-file.lua": {
+          name: "multicursor-file.lua",
+          stem: "multicursor-file",
+          extension: ".lua",
+        },
         "subdirectory/subdirectory-file.txt": {
           name: "subdirectory-file.txt",
           stem: "subdirectory-file",
@@ -71,6 +76,7 @@ export async function createTempDir(): Promise<TestDirectory> {
     }
 
     execSync(`cp ./test-environment/initial-file.txt ${dir}/`)
+    execSync(`cp ./test-environment/multicursor-file.lua ${dir}/`)
     execSync(`cp ./test-environment/file.txt ${dir}/`)
     execSync(`cp ./test-environment/test-setup.lua ${dir}/test-setup.lua`)
     execSync(`cp -r "./test-environment/dir with spaces" ${dir}/`)
