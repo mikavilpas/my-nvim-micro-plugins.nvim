@@ -101,6 +101,23 @@ local plugins = {
     },
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "jake-stewart/multicursor.nvim",
+    branch = "api",
+    config = function()
+      local mc = require("multicursor-nvim")
+
+      mc.setup()
+
+      vim.keymap.set({ "v" }, "I", function()
+        require("my-nvim-micro-plugins.multicursors").add_multicursors_at_line_starts()
+      end)
+
+      vim.keymap.set({ "v" }, "A", function()
+        require("my-nvim-micro-plugins.multicursors").add_multicursors_at_line_ends()
+      end)
+    end,
+  },
 }
 require("lazy").setup({ spec = plugins })
 

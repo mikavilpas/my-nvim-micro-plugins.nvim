@@ -6,6 +6,7 @@ export const testDirectoryFile = z.enum([
   "initial-file.txt",
   "file.txt",
   "test-setup.lua",
+  "multicursor-file.lua",
   "subdirectory/subdirectory-file.txt",
   "other-subdirectory/other-sub-file.txt",
   "dir with spaces/file1.txt",
