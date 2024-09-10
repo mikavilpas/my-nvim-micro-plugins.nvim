@@ -12,8 +12,8 @@ jobs:
         with:
           # Github secret token
           token: ${{ secrets.GITHUB_TOKEN }}
-          # selene arguments
-          args: --display-style=quiet .
+          # selene arguments, should be the same as in ../../Makefile
+          args: ./lua/ ./spec/ ./integration-tests/
           # selene version
           version: 0.26.1
 
