@@ -37,7 +37,7 @@ jobs:
           echo "realpath is installed at $(which realpath) in version $(realpath --version)"
 
       - name: Run tests
-        uses: nvim-neorocks/nvim-busted-action@v1.0.1
+        uses: nvim-neorocks/nvim-busted-action@v1.1.0
         with:
           nvim_version: nightly
           luarocks_version: "3.11.1"
