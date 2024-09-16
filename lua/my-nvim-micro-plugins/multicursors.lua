@@ -7,8 +7,7 @@ end
 
 function M.add_multicursors_at_line_ends()
   local mc = require("multicursor-nvim")
-  mc.visualToCursors()
-  mc.perform("$")
+  mc.appendVisual()
 end
 
 return M

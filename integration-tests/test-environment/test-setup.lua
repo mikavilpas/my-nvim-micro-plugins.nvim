@@ -103,7 +103,6 @@ local plugins = {
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "jake-stewart/multicursor.nvim",
-    branch = "api",
     config = function()
       local mc = require("multicursor-nvim")
 

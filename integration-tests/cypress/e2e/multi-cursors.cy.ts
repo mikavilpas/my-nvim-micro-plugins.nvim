@@ -28,9 +28,9 @@ describe("multicursor-nvim integration", () => {
       cy.contains("is_visual_line")
 
       // make sure the cursor is at the start so we can test that
-      cy.typeIntoTerminal("0Vjj")
+      cy.typeIntoTerminal("0VG")
       redraw()
-      cy.typeIntoTerminal("Aa-- comment{esc}")
+      cy.typeIntoTerminal("A-- comment{esc}")
 
       // the text should now be changed
       cy.contains("local mode = vim.fn.mode()-- comment")
