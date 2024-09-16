@@ -12,13 +12,12 @@ describe("multicursor-nvim integration", () => {
       cy.contains("is_visual_line")
 
       // make sure the cursor is at the end so we can test that
-      cy.typeIntoTerminal("$VG")
+      cy.typeIntoTerminal("$Vjj")
       redraw()
       cy.typeIntoTerminal("Ii--{esc}")
-      redraw()
 
       // the text should now be commented out for all lines
-      cy.contains('--local is_visual_line = mode:sub(1, 1) == "V"')
+      cy.contains("--local mode = vim.fn.mode()")
     })
   })
 
@@ -31,7 +30,7 @@ describe("multicursor-nvim integration", () => {
       // make sure the cursor is at the start so we can test that
       cy.typeIntoTerminal("0VG")
       redraw()
-      cy.typeIntoTerminal("Aa-- comment{esc}")
+      cy.typeIntoTerminal("A-- comment{esc}")
 
       // the text should now be changed
       cy.contains("local mode = vim.fn.mode()-- comment")
@@ -47,11 +46,10 @@ describe("multicursor-nvim integration", () => {
       // move to the second word
       cy.typeIntoTerminal("w")
 
-      cy.typeIntoTerminal("{control+v}jI")
-      redraw()
+      cy.typeIntoTerminal("{control+v}jjI")
       cy.typeIntoTerminal("itest_{esc}")
 
-      cy.contains("local test_mode2")
+      cy.contains("local test_is_visual_line")
     })
   })
 })
