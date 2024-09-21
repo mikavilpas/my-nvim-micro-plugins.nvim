@@ -14,7 +14,9 @@ export type NeovimContext = {
 
 declare global {
   interface Window {
-    startNeovim(startArguments?: MyStartNeovimServerArguments): Promise<NeovimContext>
+    startNeovim(
+      startArguments?: MyStartNeovimServerArguments,
+    ): Promise<NeovimContext>
   }
 }
 
