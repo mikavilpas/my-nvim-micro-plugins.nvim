@@ -14,24 +14,6 @@ export const MyTestDirectorySchema = z.object({
   name: z.literal("test-environment"),
   type: z.literal("directory"),
   contents: z.object({
-    "dir with spaces": z.object({
-      name: z.literal("dir with spaces"),
-      type: z.literal("directory"),
-      contents: z.object({
-        "file1.txt": z.object({
-          name: z.literal("file1.txt"),
-          type: z.literal("file"),
-          extension: z.literal("txt"),
-          stem: z.literal("file1."),
-        }),
-        "file2.txt": z.object({
-          name: z.literal("file2.txt"),
-          type: z.literal("file"),
-          extension: z.literal("txt"),
-          stem: z.literal("file2."),
-        }),
-      }),
-    }),
     "file.txt": z.object({
       name: z.literal("file.txt"),
       type: z.literal("file"),
@@ -122,9 +104,6 @@ export type MyTestDirectoryContentsSchemaType = z.infer<
 export type MyTestDirectory = MyTestDirectoryContentsSchemaType["contents"]
 
 export const testDirectoryFiles = z.enum([
-  "dir with spaces/file1.txt",
-  "dir with spaces/file2.txt",
-  "dir with spaces",
   "file.txt",
   "initial-file.txt",
   "multicursor-file.lua",
