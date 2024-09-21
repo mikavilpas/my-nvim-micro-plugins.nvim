@@ -6,9 +6,6 @@ scripts/lazy.nvim/
 /lua_modules
 /.luarocks
 .repro
-integration-tests/server/build/server.js
-integration-tests/pid.txt
-integration-tests/server/build
 *.pem
-integration-tests/test-environment/testdirs
-integration-tests/cypress/screenshots
+packages/integration-tests/test-environment/testdirs
+packages/integration-tests/cypress/screenshots

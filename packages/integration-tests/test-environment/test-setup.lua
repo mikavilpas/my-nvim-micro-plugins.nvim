@@ -27,7 +27,7 @@ if not (vim.uv).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.opt.rtp:prepend("../../lua")
+vim.opt.rtp:prepend("../../../lua")
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
@@ -92,7 +92,7 @@ local plugins = {
   {
     "mikavilpas/my-nvim-micro-plugins.nvim",
     event = "VeryLazy",
-    dir = "../../",
+    dir = "../../../",
     ---@type my-nvim-micro-plugins.Config
     opts = {
       -- in github actions, we don't have access to the clipboard, so just use

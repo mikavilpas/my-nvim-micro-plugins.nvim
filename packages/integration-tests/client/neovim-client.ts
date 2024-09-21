@@ -61,7 +61,6 @@ const ready = new Promise<void>((resolve) => {
     const neovim = await trpc.neovim.start.mutate({
       tabId,
       filename: startArgs?.filename ?? "initial-file.txt",
-      startupScriptModifications: startArgs?.startupScriptModifications,
       terminalDimensions,
     })
 
