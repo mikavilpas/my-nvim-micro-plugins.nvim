@@ -15,7 +15,9 @@ describe("my_copy_relative_path integrations", () => {
 
       // The search should be open and started from the root of the project.
       cy.typeIntoTerminal(
-        dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "adjacent-file.txt"
+        ].name,
       )
 
       // the file should be selected - copy the relative path
@@ -70,11 +72,13 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("file.txt$") // this very test file
 
       hasColor(
-        dir.contents["other-subdirectory/other-sub-file.txt"].name,
+        dir.contents["other-subdirectory"].contents["other-sub-file.txt"].name,
         darkTheme.text.rgb,
       )
       hasColor(
-        dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "adjacent-file.txt"
+        ].name,
         darkTheme.text.rgb,
       )
 
@@ -82,7 +86,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+i}")
       cy.typeIntoTerminal("{control+i}")
       hasColor(
-        dir.contents["other-subdirectory/other-sub-file.txt"].name,
+        dir.contents["other-subdirectory"].contents["other-sub-file.txt"].name,
         darkTheme.yellow.rgb,
       )
       hasColor("adjacent-", darkTheme.yellow.rgb)
@@ -120,10 +124,14 @@ describe("my_copy_relative_path integrations", () => {
       // Narrow it down to some known files
       cy.typeIntoTerminal("routes/posts.$postId/.txt")
       cy.contains(
-        dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "adjacent-file.txt"
+        ].name,
       ).should("have.css", "color", rgbify(darkTheme.text.rgb))
       cy.contains(
-        dir.contents["routes/posts.$postId/should-be-excluded-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "should-be-excluded-file.txt"
+        ].name,
       ).should("have.css", "color", rgbify(darkTheme.text.rgb))
 
       // Select the files with telescope. They should have a new color after
@@ -131,10 +139,14 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+i}")
       cy.typeIntoTerminal("{control+i}")
       cy.contains(
-        dir.contents["routes/posts.$postId/adjacent-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "adjacent-file.txt"
+        ].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
       cy.contains(
-        dir.contents["routes/posts.$postId/should-be-excluded-file.txt"].name,
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "should-be-excluded-file.txt"
+        ].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
 
       // copy the relative path. This should close telescope

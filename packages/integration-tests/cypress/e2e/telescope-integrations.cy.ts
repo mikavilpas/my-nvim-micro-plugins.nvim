@@ -14,7 +14,11 @@ describe("telescope integration", () => {
       // Narrow it down to the TestDirectory because the file names are
       // statically known and easier to maintain
       cy.typeIntoTerminal("routes")
-      cy.contains(dir.contents["routes/posts.$postId/adjacent-file.txt"].name)
+      cy.contains(
+        dir.contents.routes.contents["posts.$postId"].contents[
+          "adjacent-file.txt"
+        ].name,
+      )
     })
   })
 })
