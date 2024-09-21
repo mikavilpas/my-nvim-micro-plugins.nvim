@@ -34,7 +34,7 @@ init:
 	@echo "$(COLOR_WHITE)    Reformat all code$(COLOR_RESET)"
 
 lint:
-	selene ./lua/ ./spec/ ./integration-tests/
+	selene ./lua/ ./spec/ ./packages/integration-tests/
 	@if grep -r -e "#focus" --include \*.lua ./spec/; then \
 			echo "\n"; \
 			echo "Error: ${COLOR_GREEN}#focus${COLOR_RESET} tags found in the codebase.\n"; \
@@ -50,4 +50,4 @@ test-focus:
 	luarocks test --local -- --filter=focus
 
 format:
-	stylua lua/ spec/ integration-tests/
+	stylua lua/ spec/ packages/integration-tests/

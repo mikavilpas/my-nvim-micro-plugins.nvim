@@ -11,7 +11,7 @@ describe("the healthcheck", () => {
     cy.typeIntoTerminal(":checkhealth my-nvim-micro-plugins{enter}")
 
     // the version of the plugin should be shown
-    cy.readFile("../.release-please-manifest.json").then(
+    cy.readFile("../../.release-please-manifest.json").then(
       (manifest: unknown) => {
         const version = z.object({ ".": z.string() }).parse(manifest)
         cy.contains(`Running version ${version["."]}`)

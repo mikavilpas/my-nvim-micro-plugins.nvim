@@ -9,12 +9,15 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4.1.7
+      - uses: pnpm/action-setup@v4.0.0
       - uses: actions/setup-node@v4.0.4
         with:
           node-version-file: .nvmrc
-      - run: npm run clean-install:all
+          cache: "pnpm"
+      - run: pnpm install
+
       - uses: reviewdog/action-eslint@v1.32.0
         with:
-          workdir: integration-tests
+          workdir: packages/integration-tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review # Change reporter.

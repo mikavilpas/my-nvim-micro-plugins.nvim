@@ -11,7 +11,7 @@ updates:
   - package-ecosystem: "npm"
     directories:
       - "/"
-      - "integration-tests/"
+      - "packages/integration-tests/"
     groups:
       # Update all npm dependencies together
       # https://github.blog/2023-08-24-a-faster-way-to-manage-version-updates-with-dependabot/
