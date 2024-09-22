@@ -12,7 +12,9 @@ describe("my_live_grep", () => {
       cy.typeIntoTerminal("hello")
 
       cy.contains(dir.contents["file.txt"].name)
-      cy.contains(dir.contents["subdirectory/subdirectory-file.txt"].name)
+      cy.contains(
+        dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
+      )
     })
   })
 
@@ -30,7 +32,9 @@ describe("my_live_grep", () => {
       // select the word and start the search
       cy.typeIntoTerminal("viw /")
 
-      cy.contains(dir.contents["subdirectory/subdirectory-file.txt"].name)
+      cy.contains(
+        dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
+      )
     })
   })
 })
