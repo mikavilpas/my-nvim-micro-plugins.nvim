@@ -33,8 +33,8 @@ importers:
         specifier: 11.0.0-rc.502
         version: 11.0.0-rc.502
       '@tui-sandbox/library':
-        specifier: 1.0.3
-        version: 1.0.3(typescript@5.6.2)
+        specifier: 1.0.5
+        version: 1.0.5(typescript@5.6.2)
       '@types/uuid':
         specifier: 10.0.0
         version: 10.0.0
@@ -141,6 +141,9 @@ packages:
 
   '@catppuccin/palette@1.3.0':
     resolution: {integrity: sha512-HlgVmsTJbpGnIv7FWeypvmTUgiU8SimM3KzutZJ4x7FYk3L43H67me0hAZcBTPYp2uzaLY4Iv0CnDHt3KiGf8g==}
+
+  '@catppuccin/palette@1.4.0':
+    resolution: {integrity: sha512-Npdg/QFeMAEbRVlnJqc1xE3i7NI4liSq4tTTXk4U/L3vPEiqw3bZQJRLYjuP0Vq2AEDNS5H5Li+lk27c38sP4g==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -653,8 +656,8 @@ packages:
   '@ts-morph/common@0.21.0':
     resolution: {integrity: sha512-ES110Mmne5Vi4ypUKrtVQfXFDtCsDXiUiGxF6ILVlE90dDD4fdpC1LSjydl/ml7xJWKSDZwUYD2zkOePMSrPBA==}
 
-  '@tui-sandbox/library@1.0.3':
-    resolution: {integrity: sha512-A6tJp4hYErLeGhOU/C6xPSW+Es/4r0Rl7qHku5mgfk+BBONtjLw1nKdup1gaQMgLzWDbQYfM9PD6Kpn1QLXWBA==}
+  '@tui-sandbox/library@1.0.5':
+    resolution: {integrity: sha512-X+1D2/+g3a66MVuGQ0pSlj/nwDOTvDdjJbiOg5TL1u+KEl6g6A9xhstVNXAx/Y1hvL8Dx34U5P+LE4fZ27DFyw==}
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -3012,6 +3015,8 @@ snapshots:
 
   '@catppuccin/palette@1.3.0': {}
 
+  '@catppuccin/palette@1.4.0': {}
+
   '@colors/colors@1.5.0':
     optional: true
 
@@ -3397,9 +3402,9 @@ snapshots:
       mkdirp: 2.1.6
       path-browserify: 1.0.1
 
-  '@tui-sandbox/library@1.0.3(typescript@5.6.2)':
+  '@tui-sandbox/library@1.0.5(typescript@5.6.2)':
     dependencies:
-      '@catppuccin/palette': 1.3.0
+      '@catppuccin/palette': 1.4.0
       '@runtyping/zod': 2.1.1(typescript@5.6.2)(zod@3.23.8)
       '@trpc/client': 11.0.0-rc.477(@trpc/server@11.0.0-rc.477)
       '@trpc/server': 11.0.0-rc.477
