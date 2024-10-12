@@ -10,6 +10,7 @@ describe("climbing up from .git", function()
       vim.fn.mkdir(base_dir, "p")
 
       local git_root_finder_function = spy.new(function()
+        -- simulate the case where the root is found
         return ".git"
       end) --[[@as fun(): string]]
 
@@ -29,6 +30,7 @@ describe("climbing up from .git", function()
       vim.fn.mkdir(base_dir, "p")
 
       local git_root_finder_function = spy.new(function()
+        -- simulate the case where the root is found but not exactly '.git'
         return ".gitsomething"
       end) --[[@as fun(): string]]
 
@@ -40,4 +42,18 @@ describe("climbing up from .git", function()
         .was_not_called_with(vim.fs.joinpath(base_dir, ".."))
     end
   )
+end)
+
+it("raises an error if the root is not found", function()
+  local base_dir = vim.fn.tempname()
+  vim.fn.mkdir(base_dir, "p")
+
+  local git_root_finder_function = spy.new(function()
+    -- simulate the case where the root is not found
+    return nil
+  end) --[[@as fun(): string]]
+
+  assert.has_error(function()
+    main.find_project_root(base_dir, git_root_finder_function)
+  end, "Project root not found in " .. base_dir)
 end)
