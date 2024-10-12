@@ -85,29 +85,34 @@ function M.relative_path_to_file(current_file_dir, selected_file)
   return relative_path
 end
 
----@param current_file_dir? string
-function M.find_project_root(current_file_dir)
-  current_file_dir = current_file_dir or vim.fn.expand("%:p:h")
+---@param cwd string
+local function find_git_root(cwd)
+  local obj = vim
+    .system({ "git", "rev-parse", "--show-toplevel" }, { text = true, cwd = cwd })
+    :wait()
 
-  -- Run git command using vim.loop
-  local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
-  if not handle then
-    error("could not run git command")
+  if obj.code == 0 then
+    local lines = vim.split(obj.stdout, "\n")
+    return lines[1]
   end
+end
 
-  local git_root = handle:read("*a"):gsub("%s+", "") -- Read the output and remove any trailing whitespace
-  handle:close()
+---@param current_file_dir? string
+---@param git_root_finder_function? fun(path: string): string # strategy to find the git root when given a directory
+function M.find_project_root(current_file_dir, git_root_finder_function)
+  git_root_finder_function = git_root_finder_function or find_git_root
+  current_file_dir = current_file_dir or vim.fn.expand("%:p:h")
+  assert(
+    vim.fn.isdirectory(current_file_dir) == 1,
+    "current_file_dir is not a directory: " .. current_file_dir
+  )
 
-  -- Check if the git root was found
-  if git_root ~= "" then
-    return git_root
+  local found = git_root_finder_function(current_file_dir)
+
+  if found:match(".git$") then
+    return git_root_finder_function(vim.fs.joinpath(current_file_dir, ".."))
   else
-    if current_file_dir:match(".git$") then
-      return M.find_project_root(vim.fs.joinpath(current_file_dir, ".."))
-    else
-      return current_file_dir
-    end
-    error("could not determine top level git directory")
+    return found
   end
 end
 
