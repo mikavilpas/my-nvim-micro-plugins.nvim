@@ -88,11 +88,20 @@ end
 ---@param current_file_dir? string
 function M.find_project_root(current_file_dir)
   current_file_dir = current_file_dir or vim.fn.expand("%:p:h")
-  local stdout, ret = require("telescope.utils").get_os_command_output(
-    { "git", "rev-parse", "--show-toplevel" },
-    current_file_dir
-  )
-  if ret ~= 0 then
+
+  -- Run git command using vim.loop
+  local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
+  if not handle then
+    error("could not run git command")
+  end
+
+  local git_root = handle:read("*a"):gsub("%s+", "") -- Read the output and remove any trailing whitespace
+  handle:close()
+
+  -- Check if the git root was found
+  if git_root ~= "" then
+    return git_root
+  else
     if current_file_dir:match(".git$") then
       return M.find_project_root(vim.fs.joinpath(current_file_dir, ".."))
     else
@@ -100,10 +109,6 @@ function M.find_project_root(current_file_dir)
     end
     error("could not determine top level git directory")
   end
-  local cwd = stdout[1]
-  assert(type(cwd) == "string", "cwd is not a string")
-
-  return cwd
 end
 
 --
