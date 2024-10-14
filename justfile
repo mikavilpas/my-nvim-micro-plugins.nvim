@@ -11,20 +11,9 @@ COLOR_WHITE := '\033[1;37m'
 default: help
 
 @help:
-    echo ""
+  just --list
 
-    echo "{{ COLOR_GREEN }}Welcome to my-nvim-micro-plugins.nvim development! 🚀{{ COLOR_RESET }}"
-    echo "{{ COLOR_BLUE_ }}Next, run one of these commands to get started:{{ COLOR_RESET }}"
-    echo "{{ COLOR_YELLO }}  just test{{ COLOR_RESET }}"
-    echo "{{ COLOR_WHITE }}    Run all tests{{ COLOR_RESET }}"
-
-    echo "{{ COLOR_YELLO }}  just test-focus{{ COLOR_RESET }}"
-    echo "{{ COLOR_WHITE }}    Run only the tests marked with #focus in the test name{{ COLOR_RESET }}"
-    echo "{{ COLOR_YELLO }}  just lint{{ COLOR_RESET }}"
-    echo "{{ COLOR_WHITE }}    Check the code for lint errors{{ COLOR_RESET }}"
-    echo "{{ COLOR_YELLO }}  just format{{ COLOR_RESET }}"
-    echo "{{ COLOR_WHITE }}    Reformat all code{{ COLOR_RESET }}"
-
+# Build the project
 @build:
     echo "Building project..."
     luarocks init --no-gitignore
@@ -32,6 +21,7 @@ default: help
 
     just help
 
+# Check the code for lint errors
 lint:
     selene ./lua/ ./spec/
 
@@ -42,14 +32,18 @@ lint:
       exit 1; \
     fi
 
+# Run all tests
 test:
     luarocks test --local
 
+# Run only the tests marked with #focus somewhere in the test name
 test-focus:
     luarocks test --local -- --filter=focus
 
+# Reformat all code
 format:
     stylua lua/ spec/ packages/integration-tests/
 
+# Check the code for errors (lint + test + format)
 check: lint test format
 
