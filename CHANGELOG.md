@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.5.1...v1.6.0) (2024-10-12)
+
+
+### Features
+
+* report clear error when the project root cannot be found ([d51fe88](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/d51fe88be507df4db01bd64c2db7971a840e8728))
+
 ## [1.5.1](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.5.0...v1.5.1) (2024-09-02)
 
 
