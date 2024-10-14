@@ -7,10 +7,7 @@ function M.list_windows_and_files()
   for i = 1, win_count do
     local bufnr = vim.fn.winbufnr(i)
     local filename = vim.fn.bufname(bufnr)
-    table.insert(
-      result,
-      string.format(filename == "" and "[No File]" or filename)
-    )
+    table.insert(result, (filename == "" and "[No File]" or filename))
   end
 
   return result
