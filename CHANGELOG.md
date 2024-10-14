@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.6.0...v1.7.0) (2024-10-14)
+
+
+### Features
+
+* allow rotating windows like `c-w c-x` exchanges windows ([#84](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/issues/84)) ([1e22de5](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/1e22de5bf54ad467911b3ffed3ac9452f6a87e3f))
+
 ## [1.6.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.5.1...v1.6.0) (2024-10-12)
 
 
