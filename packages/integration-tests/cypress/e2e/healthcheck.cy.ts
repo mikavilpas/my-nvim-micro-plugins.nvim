@@ -2,7 +2,7 @@ import z from "zod"
 
 describe("the healthcheck", () => {
   it("can run the :healthcheck", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim()
 
     // wait until text on the start screen is visible
@@ -26,7 +26,7 @@ describe("the healthcheck", () => {
   })
 
   it("can run the :healthcheck for telescope", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim()
 
     // wait until text on the start screen is visible

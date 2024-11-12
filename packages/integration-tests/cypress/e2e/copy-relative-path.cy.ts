@@ -5,7 +5,7 @@ const darkTheme = flavors.macchiato.colors
 
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current telescope file search result", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim().then((dir) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
@@ -33,7 +33,7 @@ describe("my_copy_relative_path integrations", () => {
 
   it("can copy the relative path to the current telescope grep search result", () => {
     //
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim().then((_dir) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
@@ -62,7 +62,7 @@ describe("my_copy_relative_path integrations", () => {
 
   it("can copy the relative path to multiple telescope grep search results", () => {
     //
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim().then((dir) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
@@ -112,7 +112,7 @@ describe("my_copy_relative_path integrations", () => {
   })
 
   it("supports multiple telescope file results", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim().then((dir) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
