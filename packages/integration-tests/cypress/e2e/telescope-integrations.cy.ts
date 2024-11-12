@@ -1,6 +1,6 @@
 describe("telescope integration", () => {
   it("can find files in the entire project", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim().then((dir) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")

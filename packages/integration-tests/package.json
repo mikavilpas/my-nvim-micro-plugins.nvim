@@ -6,15 +6,13 @@
   "scripts": {
     "build": "tsc && vite build",
     "cy:open": "cypress open --e2e",
-    "cy:run": "concurrently --success command-cypress --kill-others --names 'client,server,cypress' --prefix-colors 'blue,green,yellow' 'npm run dev:client' 'npm run dev:server' 'wait-on --timeout 60000 http://127.0.0.1:5173 && npx cypress run'",
-    "dev": "concurrently --kill-others --names 'client,server,cypress' --prefix-colors 'blue,green,yellow' 'npm run dev:client' 'npm run dev:server' 'npm run cy:open'",
-    "dev:client": "vite",
-    "dev:server": "nodemon --watch server --ext '*' --exec 'tsx ./server/server.ts'",
+    "cy:run": "concurrently --success command-cypress --kill-others --names 'app,cypress' --prefix-colors 'blue,yellow' 'pnpm tui start' 'wait-on --timeout 60000 http://127.0.0.1:3000/ping && pnpm exec cypress run'",
+    "dev": "concurrently --kill-others --names 'app,cypress' --prefix-colors 'blue,yellow' 'pnpm tui start' 'pnpm cy:open'",
     "eslint": "eslint --max-warnings=0 ."
   },
   "dependencies": {
     "@catppuccin/palette": "1.7.1",
-    "@tui-sandbox/library": "2.3.0",
+    "@tui-sandbox/library": "4.0.0",
     "cypress": "13.15.2",
     "tsx": "4.19.2",
     "wait-on": "8.0.1",
@@ -29,10 +27,8 @@
     "eslint": "9.14.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-no-only-tests": "3.3.0",
-    "nodemon": "3.1.7",
     "prettier-plugin-organize-imports": "4.1.0",
     "tinycolor2": "1.6.0",
-    "typescript": "5.6.3",
-    "vite": "5.4.10"
+    "typescript": "5.6.3"
   }
 }

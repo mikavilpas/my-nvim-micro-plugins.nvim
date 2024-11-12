@@ -6,7 +6,7 @@ describe("multicursor-nvim integration", () => {
   }
 
   it("can add to the start of lines", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim({ filename: "multicursor-file.lua" }).then(() => {
       // wait until text on the start screen is visible
       cy.contains("is_visual_line")
@@ -22,7 +22,7 @@ describe("multicursor-nvim integration", () => {
   })
 
   it("can add to the end of lines", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim({ filename: "multicursor-file.lua" }).then(() => {
       // wait until text on the start screen is visible
       cy.contains("is_visual_line")
@@ -38,7 +38,7 @@ describe("multicursor-nvim integration", () => {
   })
 
   it("can add to the start of a visual block selection", () => {
-    cy.visit("http://localhost:5173")
+    cy.visit("/")
     cy.startNeovim({ filename: "multicursor-file.lua" }).then(() => {
       // wait until text on the start screen is visible
       cy.contains("is_visual_line")
