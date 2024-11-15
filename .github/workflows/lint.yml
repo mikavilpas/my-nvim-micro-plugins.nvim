@@ -13,7 +13,7 @@ jobs:
           # Github secret token
           token: ${{ secrets.GITHUB_TOKEN }}
           # selene arguments, should be the same as in ../../justfile
-          args: ./lua/ ./spec/ ./packages/integration-tests/
+          args: ./lua/ ./spec/
           # selene version
           version: 0.26.1
 
