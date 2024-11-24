@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "cy:open": "cypress open --e2e",
     "cy:run": "concurrently --success command-cypress --kill-others --names 'app,cypress' --prefix-colors 'blue,yellow' 'pnpm tui start' 'wait-on --timeout 60000 http://127.0.0.1:3000/ping && pnpm exec cypress run'",
-    "dev": "concurrently --kill-others --names 'app,cypress' --prefix-colors 'blue,yellow' 'pnpm tui start' 'pnpm cy:open'",
+    "dev": "concurrently --kill-others --names 'app,cypress' --prefix-colors 'blue,yellow' 'pnpm tui start' 'pnpm cy:open --e2e --browser=electron'",
     "eslint": "eslint --max-warnings=0 ."
   },
   "dependencies": {
