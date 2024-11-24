@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@catppuccin/palette": "1.7.1",
-    "@tui-sandbox/library": "6.1.0",
+    "@tui-sandbox/library": "7.2.0",
     "cypress": "13.16.0",
     "tsx": "4.19.2",
     "wait-on": "8.0.1",
@@ -29,7 +29,7 @@
     "eslint-plugin-no-only-tests": "3.3.0",
     "prettier-plugin-organize-imports": "4.1.0",
     "tinycolor2": "1.6.0",
-    "type-fest": "*",
+    "type-fest": "4.27.0",
     "typescript": "5.6.3"
   }
 }
