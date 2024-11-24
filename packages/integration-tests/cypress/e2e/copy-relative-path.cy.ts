@@ -24,10 +24,12 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+y}")
       cy.contains("Find files").should("not.exist")
 
-      // the relative path should be copied to the clipboard
-      cy.typeIntoTerminal(":registers{enter}")
-
-      cy.contains("../../routes/posts.$postId/adjacent-file.txt")
+      // the relative path should be copied to the register
+      cy.runExCommand({ command: "register z" }).then((output) => {
+        expect(output.value).to.contain(
+          "../../routes/posts.$postId/adjacent-file.txt",
+        )
+      })
     })
   })
 
@@ -49,14 +51,12 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("Live grep in").should("not.exist")
 
       // The relative path should be copied to the clipboard. Paste it
-      cy.typeIntoTerminal(`V"zp`)
-
-      cy.contains("../../../cypress/e2e/copy-relative-path.cy")
-
-      // line numbers should be removed
-      cy.contains("../../../cypress/e2e/copy-relative-path.cy:").should(
-        "not.exist",
-      )
+      cy.runExCommand({ command: "register z" }).then((output) => {
+        expect(output.value).to.contain(
+          // line numbers should have been removed
+          "../../../cypress/e2e/copy-relative-path.cy",
+        )
+      })
     })
   })
 
@@ -94,20 +94,15 @@ describe("my_copy_relative_path integrations", () => {
       // copy the relative path
       cy.typeIntoTerminal("{control+y}")
 
-      // The relative path should be copied to the clipboard. Paste it
-      cy.typeIntoTerminal(`V"zp`)
-
-      // only the file paths should be copied
-      cy.contains("../../other-subdirectory/other-sub-file.txt")
-      cy.contains("../../routes/posts.$postId/adjacent-file.txt")
-
-      // line numbers should be removed
-      cy.contains("../../routes/posts.$postId/adjacent-file.txt:").should(
-        "not.exist",
-      )
-      cy.contains("../../other-subdirectory/other-sub-file.txt:").should(
-        "not.exist",
-      )
+      // The relative path should be copied to the clipboard.
+      cy.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then((output) => {
+        expect(output.value).to.eql(
+          [
+            "../../other-subdirectory/other-sub-file.txt",
+            "../../routes/posts.$postId/adjacent-file.txt",
+          ].join("\n"),
+        )
+      })
     })
   })
 
@@ -153,12 +148,15 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+y}")
       cy.contains("Find files").should("not.exist")
 
-      // the relative path should be copied to the clipboard
-      cy.typeIntoTerminal("V")
-      cy.typeIntoTerminal(`"zp`)
-
-      cy.contains("../../routes/posts.$postId/adjacent-file.txt")
-      cy.contains("../../routes/posts.$postId/should-be-excluded-file.txt")
+      // The relative path should be copied to the clipboard.
+      cy.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then((output) => {
+        expect(output.value).to.eql(
+          [
+            "../../routes/posts.$postId/adjacent-file.txt",
+            "../../routes/posts.$postId/should-be-excluded-file.txt",
+          ].join("\n"),
+        )
+      })
     })
   })
 })

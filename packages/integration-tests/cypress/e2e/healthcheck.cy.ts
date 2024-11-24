@@ -8,7 +8,7 @@ describe("the healthcheck", () => {
     // wait until text on the start screen is visible
     cy.contains("If you see this text, Neovim is ready!")
 
-    cy.typeIntoTerminal(":checkhealth my-nvim-micro-plugins{enter}")
+    cy.runExCommand({ command: "checkhealth my-nvim-micro-plugins" })
 
     // the version of the plugin should be shown
     cy.readFile("../../.release-please-manifest.json").then(
@@ -32,7 +32,7 @@ describe("the healthcheck", () => {
     // wait until text on the start screen is visible
     cy.contains("If you see this text, Neovim is ready!")
 
-    cy.typeIntoTerminal(":checkhealth telescope{enter}")
+    cy.runExCommand({ command: "checkhealth telescope" })
 
     cy.contains("ERROR").should("not.exist")
   })
