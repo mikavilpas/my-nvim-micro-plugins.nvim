@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@catppuccin/palette": "1.7.1",
-    "@tui-sandbox/library": "7.2.0",
+    "@tui-sandbox/library": "7.3.0",
     "cypress": "13.16.0",
     "tsx": "4.19.2",
     "wait-on": "8.0.1",
