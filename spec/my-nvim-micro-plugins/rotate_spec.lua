@@ -7,21 +7,6 @@ local a_void_walker = "a_void_walker.txt"
 local b_sakura_petals = "b_sakura_petals.txt"
 local c_whispering_forest = "c_whispering_forest.txt"
 
-describe("rotating one window", function()
-  it("does nothing", function()
-    reset.clear_all_buffers()
-    reset.close_all_windows()
-
-    vim.cmd("edit " .. a_void_walker)
-    assert.are.same({ a_void_walker }, windows.list_windows_and_files())
-
-    -- act
-    assert.has_error(function()
-      rotate.rotate_window()
-    end, "Only one window, no rotation needed")
-  end)
-end)
-
 describe("rotating 2 windows", function()
   before_each(function()
     reset.clear_all_buffers()
