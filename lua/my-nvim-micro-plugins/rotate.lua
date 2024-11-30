@@ -9,25 +9,11 @@ local function exchange()
 end
 
 function M.rotate_window()
-  -- Get the total number of windows
-  local win_count = vim.fn.winnr("$")
+  local wind_id = vim.fn.win_getid()
 
-  if win_count == 1 then
-    error("Only one window, no rotation needed")
-  end
+  exchange()
 
-  -- Get the current window number
-  local start_win = vim.fn.winnr()
-
-  if start_win < win_count then
-    -- need to swap with the next window.
-    exchange()
-    vim.cmd("wincmd w")
-  else
-    -- need to swap with the previous window
-    exchange()
-    vim.cmd("wincmd W")
-  end
+  vim.fn.win_gotoid(wind_id)
 end
 
 return M
