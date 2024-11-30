@@ -92,6 +92,15 @@ local plugins = {
       -- some other register
       clipboard_register = "z",
     },
+    keys = {
+      {
+        "<c-w><c-r>",
+        mode = { "n" },
+        function()
+          require("my-nvim-micro-plugins.rotate").rotate_window()
+        end,
+      },
+    },
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
