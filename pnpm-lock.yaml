@@ -27,8 +27,8 @@ importers:
         specifier: 1.7.1
         version: 1.7.1
       '@tui-sandbox/library':
-        specifier: 7.5.0
-        version: 7.5.0(cypress@13.17.0)(prettier@3.4.2)(type-fest@4.30.2)(typescript@5.7.2)
+        specifier: 7.5.4
+        version: 7.5.4(cypress@13.17.0)(prettier@3.4.2)(type-fest@4.31.0)(typescript@5.7.2)
       cypress:
         specifier: 13.17.0
         version: 13.17.0
@@ -73,8 +73,8 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
       type-fest:
-        specifier: 4.30.2
-        version: 4.30.2
+        specifier: 4.31.0
+        version: 4.31.0
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -378,8 +378,8 @@ packages:
     peerDependencies:
       typescript: '>=5.6.2'
 
-  '@tui-sandbox/library@7.5.0':
-    resolution: {integrity: sha512-2r3vDKff4UHR4RgbxUs4KDHbMXqVwStGkostmnNGLOF152mu86S1tIUohNinRB2YtrBNXWnvIPdGHBo09RNHQQ==}
+  '@tui-sandbox/library@7.5.4':
+    resolution: {integrity: sha512-uGUt5XZ3UHyKOudSXIj7wWzBrNQzJgqbNszb6Z6EULQgiRO96c1PYQ3rKPSM4WOCrdBJQhe2iLz9pDOsP2uaZg==}
     hasBin: true
     peerDependencies:
       cypress: ^13
@@ -2258,8 +2258,8 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
-  type-fest@4.30.2:
-    resolution: {integrity: sha512-UJShLPYi1aWqCdq9HycOL/gwsuqda1OISdBO3t8RlXQC4QvtuIz4b5FCfe2dQIWEpmlRExKmcTBfP1r9bhY7ig==}
+  type-fest@4.31.0:
+    resolution: {integrity: sha512-yCxltHW07Nkhv/1F6wWBr8kz+5BGMfP+RbRSYFnegVb0qV/UMT0G0ElBloPVerqn4M2ZV80Ir1FtCcYv1cT6vQ==}
     engines: {node: '>=16'}
 
   type-is@1.6.18:
@@ -2675,7 +2675,7 @@ snapshots:
     dependencies:
       typescript: 5.7.2
 
-  '@tui-sandbox/library@7.5.0(cypress@13.17.0)(prettier@3.4.2)(type-fest@4.30.2)(typescript@5.7.2)':
+  '@tui-sandbox/library@7.5.4(cypress@13.17.0)(prettier@3.4.2)(type-fest@4.31.0)(typescript@5.7.2)':
     dependencies:
       '@catppuccin/palette': 1.7.1
       '@trpc/client': 11.0.0-rc.666(@trpc/server@11.0.0-rc.666(typescript@5.7.2))(typescript@5.7.2)
@@ -2693,7 +2693,7 @@ snapshots:
       node-pty: 1.0.0
       prettier: 3.4.2
       tsx: 4.19.2
-      type-fest: 4.30.2
+      type-fest: 4.31.0
       typescript: 5.7.2
       winston: 3.17.0
       zod: 3.24.1
@@ -4885,7 +4885,7 @@ snapshots:
 
   type-fest@0.21.3: {}
 
-  type-fest@4.30.2: {}
+  type-fest@4.31.0: {}
 
   type-is@1.6.18:
     dependencies:
