@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.1](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.7.0...v1.7.1) (2025-01-01)
+
+
+### Bug Fixes
+
+* jumping to the wrong window after rotating ([7c320dd](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/7c320dddec94b47f240809565b27728ca192888b))
+
+
+### Performance Improvements
+
+* **tests:** use runExCommand instead of typeIntoTerminal ([3712580](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/37125803240a95a494305a567d7033b15ccc3cc0))
+
 ## [1.7.0](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.6.0...v1.7.0) (2024-10-14)
 
 
