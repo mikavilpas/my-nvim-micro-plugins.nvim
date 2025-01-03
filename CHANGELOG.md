@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.2](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.7.1...v1.7.2) (2025-01-03)
+
+
+### Bug Fixes
+
+* not being allowed to pass in nil options to my_live_grep ([f2a80be](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/f2a80be3b05e3d58e4d0abb48569bc5c5ef8e4e4))
+* project root ending in "git" not being recognized ([ab300de](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/commit/ab300deba3ccfe98c247cc93127dc24cd06e86c4))
+
 ## [1.7.1](https://github.com/mikavilpas/my-nvim-micro-plugins.nvim/compare/v1.7.0...v1.7.1) (2025-01-01)
 
 
