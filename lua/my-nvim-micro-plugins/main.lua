@@ -151,7 +151,7 @@ end
 -- Search for the current visual mode selection.
 -- Like the built in live_grep but with the options that I like, plus some
 -- documentation on how the whole thing works.
----@param options { cwd: string? }
+---@param options? { cwd: string? }
 function M.my_live_grep(options)
   local cwd = (options or {}).cwd or M.find_project_root()
   local selection = M.get_visual()
