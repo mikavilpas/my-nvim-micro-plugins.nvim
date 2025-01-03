@@ -111,7 +111,7 @@ function M.find_project_root(current_file_dir, git_root_finder_function)
 
   if found == nil then
     error(string.format("Project root not found in %s", current_file_dir))
-  elseif found:match(".git$") then
+  elseif found:match("%.git$") then
     return git_root_finder_function(vim.fs.joinpath(current_file_dir, ".."))
   else
     return found
