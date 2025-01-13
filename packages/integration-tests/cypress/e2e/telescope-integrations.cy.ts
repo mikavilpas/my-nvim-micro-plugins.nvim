@@ -1,7 +1,7 @@
 describe("telescope integration", () => {
   it("can find files in the entire project", () => {
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -15,7 +15,7 @@ describe("telescope integration", () => {
       // statically known and easier to maintain
       cy.typeIntoTerminal("routes")
       cy.contains(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "adjacent-file.txt"
         ].name,
       )

@@ -1,7 +1,7 @@
 describe("my_live_grep", () => {
   it("can grep in the project (start in normal mode)", () => {
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -11,16 +11,16 @@ describe("my_live_grep", () => {
       // project.
       cy.typeIntoTerminal("hello")
 
-      cy.contains(dir.contents["file.txt"].name)
+      cy.contains(nvim.dir.contents["file.txt"].name)
       cy.contains(
-        dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
+        nvim.dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
       )
     })
   })
 
   it("can grep in the project (start in insert mode)", () => {
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -33,7 +33,7 @@ describe("my_live_grep", () => {
       cy.typeIntoTerminal("viw /")
 
       cy.contains(
-        dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
+        nvim.dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
       )
     })
   })
