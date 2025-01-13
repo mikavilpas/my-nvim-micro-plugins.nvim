@@ -6,7 +6,7 @@ const darkTheme = flavors.macchiato.colors
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current telescope file search result", () => {
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -15,7 +15,7 @@ describe("my_copy_relative_path integrations", () => {
 
       // The search should be open and started from the root of the project.
       cy.typeIntoTerminal(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "adjacent-file.txt"
         ].name,
       )
@@ -25,7 +25,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("Find files").should("not.exist")
 
       // the relative path should be copied to the register
-      cy.runExCommand({ command: "register z" }).then((output) => {
+      nvim.runExCommand({ command: "register z" }).then((output) => {
         expect(output.value).to.contain(
           "../../routes/posts.$postId/adjacent-file.txt",
         )
@@ -36,7 +36,7 @@ describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current telescope grep search result", () => {
     //
     cy.visit("/")
-    cy.startNeovim().then((_dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -51,7 +51,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("Live grep in").should("not.exist")
 
       // The relative path should be copied to the clipboard. Paste it
-      cy.runExCommand({ command: "register z" }).then((output) => {
+      nvim.runExCommand({ command: "register z" }).then((output) => {
         expect(output.value).to.contain(
           // line numbers should have been removed
           "../../../cypress/e2e/copy-relative-path.cy",
@@ -63,7 +63,7 @@ describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to multiple telescope grep search results", () => {
     //
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -72,11 +72,12 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("file.txt$") // this very test file
 
       hasColor(
-        dir.contents["other-subdirectory"].contents["other-sub-file.txt"].name,
+        nvim.dir.contents["other-subdirectory"].contents["other-sub-file.txt"]
+          .name,
         darkTheme.text.rgb,
       )
       hasColor(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "adjacent-file.txt"
         ].name,
         darkTheme.text.rgb,
@@ -86,7 +87,8 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+i}")
       cy.typeIntoTerminal("{control+i}")
       hasColor(
-        dir.contents["other-subdirectory"].contents["other-sub-file.txt"].name,
+        nvim.dir.contents["other-subdirectory"].contents["other-sub-file.txt"]
+          .name,
         darkTheme.yellow.rgb,
       )
       hasColor("adjacent-", darkTheme.yellow.rgb)
@@ -95,20 +97,22 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+y}")
 
       // The relative path should be copied to the clipboard.
-      cy.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then((output) => {
-        expect(output.value).to.eql(
-          [
-            "../../other-subdirectory/other-sub-file.txt",
-            "../../routes/posts.$postId/adjacent-file.txt",
-          ].join("\n"),
-        )
-      })
+      nvim
+        .runLuaCode({ luaCode: `return vim.fn.getreg("z")` })
+        .then((output) => {
+          expect(output.value).to.eql(
+            [
+              "../../other-subdirectory/other-sub-file.txt",
+              "../../routes/posts.$postId/adjacent-file.txt",
+            ].join("\n"),
+          )
+        })
     })
   })
 
   it("supports multiple telescope file results", () => {
     cy.visit("/")
-    cy.startNeovim().then((dir) => {
+    cy.startNeovim().then((nvim) => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -119,12 +123,12 @@ describe("my_copy_relative_path integrations", () => {
       // Narrow it down to some known files
       cy.typeIntoTerminal("routes/posts.$postId/.txt")
       cy.contains(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "adjacent-file.txt"
         ].name,
       ).should("have.css", "color", rgbify(darkTheme.text.rgb))
       cy.contains(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "should-be-excluded-file.txt"
         ].name,
       ).should("have.css", "color", rgbify(darkTheme.text.rgb))
@@ -134,12 +138,12 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+i}")
       cy.typeIntoTerminal("{control+i}")
       cy.contains(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "adjacent-file.txt"
         ].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
       cy.contains(
-        dir.contents.routes.contents["posts.$postId"].contents[
+        nvim.dir.contents.routes.contents["posts.$postId"].contents[
           "should-be-excluded-file.txt"
         ].name,
       ).should("have.css", "color", rgbify(darkTheme.yellow.rgb))
@@ -149,14 +153,16 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("Find files").should("not.exist")
 
       // The relative path should be copied to the clipboard.
-      cy.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then((output) => {
-        expect(output.value).to.eql(
-          [
-            "../../routes/posts.$postId/adjacent-file.txt",
-            "../../routes/posts.$postId/should-be-excluded-file.txt",
-          ].join("\n"),
-        )
-      })
+      nvim
+        .runLuaCode({ luaCode: `return vim.fn.getreg("z")` })
+        .then((output) => {
+          expect(output.value).to.eql(
+            [
+              "../../routes/posts.$postId/adjacent-file.txt",
+              "../../routes/posts.$postId/should-be-excluded-file.txt",
+            ].join("\n"),
+          )
+        })
     })
   })
 })
