@@ -7,8 +7,7 @@ describe("my_live_grep", () => {
 
       cy.typeIntoTerminal(" /")
 
-      // telescope grep should be open and started from the root of the
-      // project.
+      // grep should be open and started from the root of the project.
       cy.typeIntoTerminal("hello")
 
       cy.contains(nvim.dir.contents["file.txt"].name)

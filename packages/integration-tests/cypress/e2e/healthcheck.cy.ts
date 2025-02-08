@@ -24,16 +24,4 @@ describe("the healthcheck", () => {
       cy.contains("ERROR").should("not.exist")
     })
   })
-
-  it("can run the :healthcheck for telescope", () => {
-    cy.visit("/")
-    cy.startNeovim().then((nvim) => {
-      // wait until text on the start screen is visible
-      cy.contains("If you see this text, Neovim is ready!")
-
-      nvim.runExCommand({ command: "checkhealth telescope" })
-
-      cy.contains("ERROR").should("not.exist")
-    })
-  })
 })
