@@ -34,49 +34,16 @@ vim.o.swapfile = false
 local plugins = {
   { "nvim-lua/plenary.nvim" },
   {
-    "nvim-telescope/telescope.nvim",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<down>",
-        mode = { "n", "v" },
-        function()
-          require("my-nvim-micro-plugins.main").my_find_file_in_project()
-        end,
-        { desc = "Find files (including in git submodules)" },
-      },
-      {
-        "<leader>/",
-        mode = { "n", "v" },
-        function(...)
-          require("my-nvim-micro-plugins.main").my_live_grep(...)
-        end,
-        desc = "search project 🤞🏻",
-      },
-    },
+    "folke/snacks.nvim",
+    ---@module "snacks"
+    ---@type snacks.Config
     opts = {
-      defaults = {
-        preview = false,
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-        path_display = {
-          filename_first = {
-            reverse_directories = false,
-          },
-        },
-
-        mappings = {
-          n = {
-            ["<C-y>"] = function(...)
-              require("my-nvim-micro-plugins.main").my_copy_relative_path(...)
-            end,
-          },
-          i = {
-            ["<C-y>"] = function(...)
-              require("my-nvim-micro-plugins.main").my_copy_relative_path(...)
-            end,
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<C-y>"] = { "my_copy_relative_path", mode = { "n", "i" } },
+            },
           },
         },
       },
@@ -93,6 +60,20 @@ local plugins = {
       clipboard_register = "z",
     },
     keys = {
+      {
+        "<down>",
+        mode = { "n", "v" },
+        function()
+          require("my-nvim-micro-plugins.main").my_find_file_in_project()
+        end,
+      },
+      {
+        "<leader>/",
+        mode = { "n", "v" },
+        function()
+          require("my-nvim-micro-plugins.main").my_live_grep()
+        end,
+      },
       {
         "<c-w><c-r>",
         mode = { "n" },

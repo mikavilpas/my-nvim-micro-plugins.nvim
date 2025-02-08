@@ -25,8 +25,6 @@ export const MyTestDirectorySchema = z.object({
             "init.lua": z.object({
               name: z.literal("init.lua"),
               type: z.literal("file"),
-              extension: z.literal("lua"),
-              stem: z.literal("init."),
             }),
           }),
         }),
@@ -39,28 +37,20 @@ export const MyTestDirectorySchema = z.object({
         ".gitkeep": z.object({
           name: z.literal(".gitkeep"),
           type: z.literal("file"),
-          extension: z.literal(""),
-          stem: z.literal(".gitkeep"),
         }),
       }),
     }),
     "file.txt": z.object({
       name: z.literal("file.txt"),
       type: z.literal("file"),
-      extension: z.literal("txt"),
-      stem: z.literal("file."),
     }),
     "initial-file.txt": z.object({
       name: z.literal("initial-file.txt"),
       type: z.literal("file"),
-      extension: z.literal("txt"),
-      stem: z.literal("initial-file."),
     }),
     "multicursor-file.lua": z.object({
       name: z.literal("multicursor-file.lua"),
       type: z.literal("file"),
-      extension: z.literal("lua"),
-      stem: z.literal("multicursor-file."),
     }),
     "other-subdirectory": z.object({
       name: z.literal("other-subdirectory/"),
@@ -69,8 +59,6 @@ export const MyTestDirectorySchema = z.object({
         "other-sub-file.txt": z.object({
           name: z.literal("other-sub-file.txt"),
           type: z.literal("file"),
-          extension: z.literal("txt"),
-          stem: z.literal("other-sub-file."),
         }),
       }),
     }),
@@ -85,20 +73,14 @@ export const MyTestDirectorySchema = z.object({
             "adjacent-file.txt": z.object({
               name: z.literal("adjacent-file.txt"),
               type: z.literal("file"),
-              extension: z.literal("txt"),
-              stem: z.literal("adjacent-file."),
             }),
             "route.tsx": z.object({
               name: z.literal("route.tsx"),
               type: z.literal("file"),
-              extension: z.literal("tsx"),
-              stem: z.literal("route."),
             }),
             "should-be-excluded-file.txt": z.object({
               name: z.literal("should-be-excluded-file.txt"),
               type: z.literal("file"),
-              extension: z.literal("txt"),
-              stem: z.literal("should-be-excluded-file."),
             }),
           }),
         }),
@@ -111,8 +93,6 @@ export const MyTestDirectorySchema = z.object({
         "subdirectory-file.txt": z.object({
           name: z.literal("subdirectory-file.txt"),
           type: z.literal("file"),
-          extension: z.literal("txt"),
-          stem: z.literal("subdirectory-file."),
         }),
       }),
     }),
