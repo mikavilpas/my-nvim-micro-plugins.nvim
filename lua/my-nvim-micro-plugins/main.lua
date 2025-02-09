@@ -112,9 +112,6 @@ function M.my_find_file_in_project()
     title = "🔎 " .. cwd,
     search = selection,
     args = { "--hidden" },
-    actions = {
-      ["my_copy_relative_path"] = M.my_copy_relative_path,
-    },
   })
 end
 
@@ -147,9 +144,6 @@ function M.my_live_grep(options)
     -- what is ignored
     -- https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#automatic-filtering
     args = { "--pcre2", "--hidden", "--smart-case" },
-    actions = {
-      ["my_copy_relative_path"] = M.my_copy_relative_path,
-    },
   })
 end
 

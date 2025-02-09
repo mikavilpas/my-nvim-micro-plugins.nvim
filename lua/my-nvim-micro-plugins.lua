@@ -14,6 +14,9 @@ M.config = {
 ---@param config my-nvim-micro-plugins.Config
 function M.setup(config)
   M.config = vim.tbl_extend("force", M.config, config or {})
+
+  require("snacks.picker").actions["my_copy_relative_path"] =
+    require("my-nvim-micro-plugins.main").my_copy_relative_path
 end
 
 return M
