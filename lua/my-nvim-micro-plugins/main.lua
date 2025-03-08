@@ -111,6 +111,9 @@ function M.my_find_file_in_project()
     cmd = "fd",
     title = "🔎 " .. cwd,
     search = selection,
+    matcher = {
+      frecency = true,
+    },
     args = { "--hidden" },
   })
 end
