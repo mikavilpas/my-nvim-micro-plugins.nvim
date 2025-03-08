@@ -1,3 +1,5 @@
+import assert from "assert"
+
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current file search result", () => {
     cy.visit("/")
@@ -14,6 +16,8 @@ describe("my_copy_relative_path integrations", () => {
           "adjacent-file.txt"
         ].name,
       )
+      // wait for the file to be selected
+      cy.contains("this file is adjacent-file.txt")
 
       // the file should be selected - copy the relative path
       cy.typeIntoTerminal("{control+y}")
@@ -40,6 +44,8 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("hello from the test", { delay: 10 }) // this very test file
 
       cy.contains("copy-relative-path.cy")
+      // wait for the file to be selected
+      cy.contains("this very test file")
 
       // copy the relative path
       cy.typeIntoTerminal("{control+y}")
@@ -87,7 +93,13 @@ describe("my_copy_relative_path integrations", () => {
       nvim
         .runLuaCode({ luaCode: `return vim.fn.getreg("z")` })
         .then((output) => {
-          expect(output.value).to.eql(
+          const result = output.value
+
+          assert(result)
+          assert(typeof result === "string")
+
+          const lines = result.split("\n").toSorted()
+          expect(lines.join("\n")).to.eql(
             [
               "../../other-subdirectory/other-sub-file.txt",
               "../../routes/posts.$postId/adjacent-file.txt",
