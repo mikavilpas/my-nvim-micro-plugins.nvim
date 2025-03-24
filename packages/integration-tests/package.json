@@ -19,12 +19,12 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@types/node": "22.13.10",
+    "@types/node": "22.13.11",
     "@types/tinycolor2": "1.4.6",
     "@typescript-eslint/eslint-plugin": "8.27.0",
     "@typescript-eslint/parser": "8.27.0",
     "concurrently": "9.1.2",
-    "eslint": "9.22.0",
+    "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-no-only-tests": "3.3.0",
     "prettier-plugin-organize-imports": "4.1.0",
