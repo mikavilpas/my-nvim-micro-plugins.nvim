@@ -19,17 +19,17 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.13",
     "@types/tinycolor2": "1.4.6",
-    "@typescript-eslint/eslint-plugin": "8.27.0",
-    "@typescript-eslint/parser": "8.27.0",
+    "@typescript-eslint/eslint-plugin": "8.28.0",
+    "@typescript-eslint/parser": "8.28.0",
     "concurrently": "9.1.2",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-no-only-tests": "3.3.0",
     "prettier-plugin-organize-imports": "4.1.0",
     "tinycolor2": "1.6.0",
-    "type-fest": "4.37.0",
+    "type-fest": "4.38.0",
     "typescript": "5.8.2"
   }
 }
