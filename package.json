@@ -12,7 +12,7 @@
     "prettier": "prettier --check ."
   },
   "devDependencies": {
-    "@umbrelladocs/linkspector": "0.4.3",
+    "@umbrelladocs/linkspector": "0.4.4",
     "markdownlint-cli2": "0.17.2",
     "prettier": "3.5.3",
     "prettier-plugin-packagejson": "2.5.10"
