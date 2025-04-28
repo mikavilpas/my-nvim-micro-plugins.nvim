@@ -19,7 +19,7 @@
     "zod": "3.24.3"
   },
   "devDependencies": {
-    "@types/node": "22.15.0",
+    "@types/node": "22.15.2",
     "@types/tinycolor2": "1.4.6",
     "@typescript-eslint/eslint-plugin": "8.31.0",
     "@typescript-eslint/parser": "8.31.0",
@@ -29,7 +29,7 @@
     "eslint-plugin-no-only-tests": "3.3.0",
     "prettier-plugin-organize-imports": "4.1.0",
     "tinycolor2": "1.6.0",
-    "type-fest": "4.40.0",
+    "type-fest": "4.40.1",
     "typescript": "5.8.3"
   }
 }
