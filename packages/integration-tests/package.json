@@ -16,7 +16,7 @@
     "cypress": "14.3.2",
     "tsx": "4.19.4",
     "wait-on": "8.0.3",
-    "zod": "3.24.3"
+    "zod": "3.24.4"
   },
   "devDependencies": {
     "@types/node": "22.15.3",
@@ -24,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "8.31.1",
     "concurrently": "9.1.2",
-    "eslint": "9.25.1",
+    "eslint": "9.26.0",
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-no-only-tests": "3.3.0",
     "prettier-plugin-organize-imports": "4.1.0",
