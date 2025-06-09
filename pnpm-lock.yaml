@@ -28,7 +28,7 @@ importers:
         version: 1.7.1
       '@tui-sandbox/library':
         specifier: 10.3.0
-        version: 10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.53)
+        version: 10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.56)
       cypress:
         specifier: 14.4.1
         version: 14.4.1
@@ -39,8 +39,8 @@ importers:
         specifier: 8.0.3
         version: 8.0.3
       zod:
-        specifier: 3.25.53
-        version: 3.25.53
+        specifier: 3.25.56
+        version: 3.25.56
     devDependencies:
       '@types/node':
         specifier: 22.15.30
@@ -2472,8 +2472,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.25.53:
-    resolution: {integrity: sha512-BKOKoY3XcGUVkqaalCtFK15LhwR0G0i65AClFpWSXLN2gJNBGlTktukHgwexCTa/dAacPPp9ReryXPWyeZF4LQ==}
+  zod@3.25.56:
+    resolution: {integrity: sha512-rd6eEF3BTNvQnR2e2wwolfTmUTnp70aUTqr0oaGbHifzC3BKJsoV+Gat8vxUMR1hwOKBs6El+qWehrHbCpW6SQ==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -2723,7 +2723,7 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  '@tui-sandbox/library@10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.53)':
+  '@tui-sandbox/library@10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.56)':
     dependencies:
       '@catppuccin/palette': 1.7.1
       '@trpc/client': 11.1.2(@trpc/server@11.1.2(typescript@5.8.3))(typescript@5.8.3)
@@ -2744,7 +2744,7 @@ snapshots:
       type-fest: 4.41.0
       typescript: 5.8.3
       winston: 3.17.0
-      zod: 3.25.53
+      zod: 3.25.56
     transitivePeerDependencies:
       - supports-color
 
@@ -3101,7 +3101,7 @@ snapshots:
     dependencies:
       devtools-protocol: 0.0.1439962
       mitt: 3.0.1
-      zod: 3.25.53
+      zod: 3.25.56
 
   ci-info@4.2.0: {}
 
@@ -5192,6 +5192,6 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.25.53: {}
+  zod@3.25.56: {}
 
   zwitch@2.0.4: {}
