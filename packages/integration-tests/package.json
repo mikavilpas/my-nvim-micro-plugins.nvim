@@ -14,12 +14,12 @@
     "@catppuccin/palette": "1.7.1",
     "@tui-sandbox/library": "10.3.0",
     "cypress": "14.4.1",
-    "tsx": "4.19.4",
+    "tsx": "4.20.0",
     "wait-on": "8.0.3",
-    "zod": "3.25.56"
+    "zod": "3.25.58"
   },
   "devDependencies": {
-    "@types/node": "22.15.30",
+    "@types/node": "24.0.0",
     "@types/tinycolor2": "1.4.6",
     "@typescript-eslint/eslint-plugin": "8.34.0",
     "@typescript-eslint/parser": "8.34.0",
