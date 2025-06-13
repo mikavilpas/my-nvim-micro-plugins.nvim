@@ -28,19 +28,19 @@ importers:
         version: 1.7.1
       '@tui-sandbox/library':
         specifier: 10.3.0
-        version: 10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.62)
+        version: 10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.63)
       cypress:
         specifier: 14.4.1
         version: 14.4.1
       tsx:
-        specifier: 4.20.1
-        version: 4.20.1
+        specifier: 4.20.2
+        version: 4.20.2
       wait-on:
         specifier: 8.0.3
         version: 8.0.3
       zod:
-        specifier: 3.25.62
-        version: 3.25.62
+        specifier: 3.25.63
+        version: 3.25.63
     devDependencies:
       '@types/node':
         specifier: 24.0.1
@@ -2313,8 +2313,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  tsx@4.20.1:
-    resolution: {integrity: sha512-JsFUnMHIE+g8KllOvWTrSOwCKM10xLcsesvUQR61znsbrcwZ4U/QaqdymmvTqG5GMD7k2VFv9UG35C4dRy34Ag==}
+  tsx@4.20.2:
+    resolution: {integrity: sha512-He0ZWr41gLa4vD30Au3yuwpe0HXaCZbclvl8RBieUiJ9aFnPMWUPIyvw3RU8+1Crjfcrauvitae2a4tUzRAGsw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -2481,8 +2481,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.25.62:
-    resolution: {integrity: sha512-YCxsr4DmhPcrKPC9R1oBHQNlQzlJEyPAId//qTau/vBee9uO8K6prmRq4eMkOyxvBfH4wDPIPdLx9HVMWIY3xA==}
+  zod@3.25.63:
+    resolution: {integrity: sha512-3ttCkqhtpncYXfP0f6dsyabbYV/nEUW+Xlu89jiXbTBifUfjaSqXOG6JnQPLtqt87n7KAmnMqcjay6c0Wq0Vbw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -2732,7 +2732,7 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  '@tui-sandbox/library@10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.62)':
+  '@tui-sandbox/library@10.3.0(cypress@14.4.1)(prettier@3.5.3)(type-fest@4.41.0)(typescript@5.8.3)(zod@3.25.63)':
     dependencies:
       '@catppuccin/palette': 1.7.1
       '@trpc/client': 11.1.2(@trpc/server@11.1.2(typescript@5.8.3))(typescript@5.8.3)
@@ -2753,7 +2753,7 @@ snapshots:
       type-fest: 4.41.0
       typescript: 5.8.3
       winston: 3.17.0
-      zod: 3.25.62
+      zod: 3.25.63
     transitivePeerDependencies:
       - supports-color
 
@@ -3110,7 +3110,7 @@ snapshots:
     dependencies:
       devtools-protocol: 0.0.1439962
       mitt: 3.0.1
-      zod: 3.25.62
+      zod: 3.25.63
 
   ci-info@4.2.0: {}
 
@@ -5019,7 +5019,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  tsx@4.20.1:
+  tsx@4.20.2:
     dependencies:
       esbuild: 0.25.5
       get-tsconfig: 4.10.1
@@ -5210,6 +5210,6 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.25.62: {}
+  zod@3.25.63: {}
 
   zwitch@2.0.4: {}
