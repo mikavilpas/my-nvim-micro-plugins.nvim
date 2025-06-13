@@ -14,9 +14,9 @@
     "@catppuccin/palette": "1.7.1",
     "@tui-sandbox/library": "10.3.0",
     "cypress": "14.4.1",
-    "tsx": "4.20.1",
+    "tsx": "4.20.2",
     "wait-on": "8.0.3",
-    "zod": "3.25.62"
+    "zod": "3.25.63"
   },
   "devDependencies": {
     "@types/node": "24.0.1",
