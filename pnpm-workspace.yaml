@@ -1,3 +1,9 @@
 packages:
-  - "packages/*"
-# https://pnpm.io/pnpm-workspace_yaml
+  - packages/*
+
+onlyBuiltDependencies:
+  - core-js
+  - cypress
+  - esbuild
+  - node-pty
+  - puppeteer
