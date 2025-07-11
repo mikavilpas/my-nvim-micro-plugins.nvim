@@ -26,6 +26,6 @@
     "typescript": "5.8.3",
     "typescript-eslint": "8.36.0",
     "wait-on": "8.0.3",
-    "zod": "4.0.2"
+    "zod": "4.0.5"
   }
 }
