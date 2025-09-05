@@ -14,7 +14,7 @@
     "@catppuccin/palette": "1.7.1"
   },
   "devDependencies": {
-    "@tui-sandbox/library": "11.7.1",
+    "@tui-sandbox/library": "11.8.0",
     "assert": "2.1.0",
     "concurrently": "9.2.1",
     "cypress": "15.1.0",
