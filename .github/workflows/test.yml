@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Set up dependencies
         run: |
           # ripgrep is a snacks.nvim grep dependency
@@ -37,16 +37,16 @@ jobs:
           echo "realpath is installed at $(which realpath) in version $(realpath --version)"
 
       - name: Run tests
-        uses: nvim-neorocks/nvim-busted-action@v1.1.0
+        uses: nvim-neorocks/nvim-busted-action@7aac8af2368e20955f4ba84ca5ed3a7ae85ef340 # v1.1.0
         with:
           nvim_version: nightly
           luarocks_version: "3.11.1"
 
-      - uses: pnpm/action-setup@v4.1.0
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
           # https://github.com/pnpm/action-setup?tab=readme-ov-file#use-cache-to-reduce-installation-time
           run_install: false
-      - uses: actions/setup-node@v5.0.0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .nvmrc
           cache: "pnpm"
@@ -66,7 +66,7 @@ jobs:
           working-directory: packages/integration-tests
           command: pnpm exec tui run
 
-      - uses: actions/upload-artifact@v4.6.2
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         # add the line below to store screenshots only on failures
         # if: failure()
         if: failure()
@@ -88,7 +88,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3.11.1
+      - uses: fastify/github-action-merge-dependabot@e820d631adb1d8ab16c3b93e5afe713450884a4a # v3.11.1
         with:
           # https://github.com/fastify/github-action-merge-dependabot?tab=readme-ov-file
           github-token: ${{ secrets.GITHUB_TOKEN }}
