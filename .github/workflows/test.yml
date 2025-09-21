@@ -24,8 +24,8 @@ jobs:
           # fd is used for searching files
           sudo apt-get install fd-find
           mkdir -p ~/.local/bin
-          ln -s $(which fdfind) ~/.local/bin/fd
-          echo "~/.local/bin/" >> $GITHUB_PATH
+          ln -s "$(which fdfind)" ~/.local/bin/fd
+          echo "$HOME/.local/bin/" >> "$GITHUB_PATH"
           echo "fd is installed at $(which fd) in version $(fd --version)"
 
           # realpath is used to resolve relative paths
