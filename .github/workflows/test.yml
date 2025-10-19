@@ -13,20 +13,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - name: Set up dependencies
+
+      - name: Install tools with UBI
+        shell: bash
         run: |
-          # ripgrep is a snacks.nvim grep dependency
-          # sudo apt-get install ripgrep
-          curl -LJO "https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep_14.1.0-1_amd64.deb"
-          sudo dpkg -i ripgrep_14.1.0-1_amd64.deb || sudo apt-get install -f
-          echo "ripgrep is installed at $(which rg) in version $(rg --version)"
+          mkdir -p "$HOME/.local/bin"
+          # make the tools available for subsequent steps
+          echo "$(pwd)/bin" >> "$GITHUB_PATH"
+          curl --silent --location \
+              https://raw.githubusercontent.com/houseabsolute/ubi/master/bootstrap/bootstrap-ubi.sh |
+              TARGET="$HOME/.local/bin" sh
+
+          ubi --project mikefarah/yq
 
           # fd is used for searching files
-          sudo apt-get install fd-find
-          mkdir -p ~/.local/bin
-          ln -s "$(which fdfind)" ~/.local/bin/fd
-          echo "$HOME/.local/bin/" >> "$GITHUB_PATH"
-          echo "fd is installed at $(which fd) in version $(fd --version)"
+          VERSION=$(yq '.tools."ubi:sharkdp/fd"' .mise.toml)
+          ubi --project sharkdp/fd --tag "v$VERSION"
+
+          # ripgrep is a snacks.nvim grep dependency
+          VERSION=$(yq '.tools."ubi:BurntSushi/ripgrep".version' .mise.toml)
+          ubi --project BurntSushi/ripgrep --tag "$VERSION" --exe rg
 
           # realpath is used to resolve relative paths
           which realpath || {
@@ -34,7 +40,10 @@ jobs:
             echo "realpath is not installed, but it should be part of GNU coreutils and included in Ubuntu"
             exit 1
           }
-          echo "realpath is installed at $(which realpath) in version $(realpath --version)"
+
+          ls -alR bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run tests
         uses: nvim-neorocks/nvim-busted-action@d30f6d4d794c0e77b6edb530872205f98ae969c4 # v1.1.1
