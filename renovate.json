@@ -8,5 +8,27 @@
       "matchDepNames": ["lua"],
       "allowedVersions": "<=5.1"
     }
+  ],
+  "customManagers": [
+    {
+      "description": ["github workflow github-releases"],
+      "customType": "regex",
+      "datasourceTemplate": "github-releases",
+      "managerFilePatterns": [".github/workflows/*.yml"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=github-releases\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*(?<currentValue>\\S+)"
+      ]
+    },
+    {
+      "description": ["lua file github-releases"],
+      "customType": "regex",
+      "datasourceTemplate": "github-releases",
+      "managerFilePatterns": [
+        "packages/integration-tests/test-environment/.config/nvim/init.lua"
+      ],
+      "matchStrings": [
+        "--\\s*renovate:\\s*datasource=github-releases\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^=]+=\\s*\"?(?<currentValue>[^\",]+)\"?"
+      ]
+    }
   ]
 }
