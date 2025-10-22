@@ -42,6 +42,16 @@ local plugins = {
     ---@type snacks.Config
     opts = {
       picker = {
+        -- give more space for cypress to see the screen
+        layout = {
+          fullscreen = true,
+        },
+        formatters = {
+          file = {
+            -- make sure the text is not truncated in a narrow cypress window
+            filename_first = true,
+          },
+        },
         win = {
           input = {
             keys = {

@@ -6,14 +6,13 @@ describe("my_live_grep", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal(" /")
+      cy.contains("main.lua").should("not.exist")
 
       // grep should be open and started from the root of the project.
       cy.typeIntoTerminal("hello")
 
       cy.contains(nvim.dir.contents["file.txt"].name)
-      cy.contains(
-        nvim.dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
-      )
+      cy.contains("main.lua")
     })
   })
 
@@ -31,9 +30,8 @@ describe("my_live_grep", () => {
       // select the word and start the search
       cy.typeIntoTerminal("viw /")
 
-      cy.contains(
-        nvim.dir.contents.subdirectory.contents["subdirectory-file.txt"].name,
-      )
+      cy.contains("main.lua").should("not.exist")
+      cy.contains("main.lua")
     })
   })
 })
