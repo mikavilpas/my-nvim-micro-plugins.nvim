@@ -1,5 +1,6 @@
 import eslintConfigPrettier from "eslint-config-prettier"
 import noOnlyTests from "eslint-plugin-no-only-tests"
+import oxlint from "eslint-plugin-oxlint"
 import * as typescriptEslint from "typescript-eslint"
 
 export default typescriptEslint.config(
@@ -83,5 +84,7 @@ export default typescriptEslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+
+  ...oxlint.configs["flat/recommended"],
   eslintConfigPrettier,
 )
