@@ -5,4 +5,4 @@
 "ubi:junegunn/fzf" = "0.67.0"
 "ubi:BurntSushi/ripgrep" = { version = "15.1.0", exe = "rg" }
 "ubi:JohnnyMorganz/stylua" = "2.3.1"
-actionlint = "1.7.8"
+actionlint = "1.7.9"
