@@ -86,19 +86,64 @@ function M.find_project_root(current_file_dir, git_root_finder_function)
 end
 
 --
--- search for the current visual mode selection
--- https://github.com/nvim-telescope/telescope.nvim/issues/2497#issuecomment-1676551193
+-- get the current visual mode selection as a string. Adapted from:
+-- https://www.reddit.com/r/neovim/comments/1b1sv3a/function_to_get_visually_selected_text/
+---@return string
 function M.get_visual()
-  vim.cmd('noautocmd normal! "vy"')
-  local text = vim.fn.getreg("v")
-  vim.fn.setreg("v", {})
+  local _, srow, scol = unpack(vim.fn.getpos("v"))
+  local _, erow, ecol = unpack(vim.fn.getpos("."))
 
-  text = string.gsub(text or "", "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ""
+  -- visual line mode
+  if vim.fn.mode() == "V" then
+    local lines = {}
+    if srow > erow then
+      lines = vim.api.nvim_buf_get_lines(0, erow - 1, srow, true)
+    else
+      lines = vim.api.nvim_buf_get_lines(0, srow - 1, erow, true)
+    end
+
+    return table.concat(lines, "\n")
   end
+
+  -- regular visual mode
+  if vim.fn.mode() == "v" then
+    local lines = {}
+    if srow < erow or (srow == erow and scol <= ecol) then
+      lines =
+        vim.api.nvim_buf_get_text(0, srow - 1, scol - 1, erow - 1, ecol, {})
+      return table.concat(lines, "\n")
+    else
+      lines =
+        vim.api.nvim_buf_get_text(0, erow - 1, ecol - 1, srow - 1, scol, {})
+      return table.concat(lines, "\n")
+    end
+  end
+
+  -- visual block mode
+  if vim.fn.mode() == "\22" then
+    local lines = {}
+    if srow > erow then
+      srow, erow = erow, srow
+    end
+    if scol > ecol then
+      scol, ecol = ecol, scol
+    end
+    for i = srow, erow do
+      table.insert(
+        lines,
+        vim.api.nvim_buf_get_text(
+          0,
+          i - 1,
+          math.min(scol - 1, ecol),
+          i - 1,
+          math.max(scol - 1, ecol),
+          {}
+        )[1]
+      )
+    end
+    return table.concat(lines, "\n")
+  end
+  return ""
 end
 
 -- Find files from the root of the current repository.
