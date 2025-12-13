@@ -1,3 +1,5 @@
+import { isSearchVisible } from "./utils/search-utils"
+
 describe("finding files", () => {
   it("can find files in the entire project", () => {
     cy.visit("/")
@@ -6,7 +8,7 @@ describe("finding files", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal("{downArrow}")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
 
       // The search should be open and started from the root of the project.
       // search results should be visible.
@@ -31,7 +33,7 @@ describe("finding files", () => {
       cy.typeIntoTerminal("{esc}V")
 
       cy.typeIntoTerminal("{downArrow}")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
 
       // the file must have been found and preselected because its name is
       // unique in the project.

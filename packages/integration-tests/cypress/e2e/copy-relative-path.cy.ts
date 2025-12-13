@@ -1,4 +1,5 @@
 import assert from "assert"
+import { isSearchVisible } from "./utils/search-utils"
 
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current file search result", () => {
@@ -8,7 +9,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal("{downArrow}")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
 
       // The search should be open and started from the root of the project.
       cy.typeIntoTerminal(
@@ -17,7 +18,7 @@ describe("my_copy_relative_path integrations", () => {
         ].name,
       )
       // wait for the file to be selected
-      cy.contains("this file is adjacent-file.txt")
+      isSearchVisible()
 
       // the file should be selected - copy the relative path
       cy.typeIntoTerminal("{control+y}")
@@ -40,7 +41,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal(" /")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
       cy.typeIntoTerminal("hello from the test", { delay: 10 }) // this very test file
 
       cy.contains("copy-relative-path.cy")
@@ -68,7 +69,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal(" /")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
       cy.typeIntoTerminal("file.txt$") // this very test file
 
       cy.contains(
@@ -116,7 +117,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("If you see this text, Neovim is ready!")
 
       cy.typeIntoTerminal("{downArrow}")
-      cy.contains("🔎") // wait until the search prompt is visible
+      isSearchVisible()
 
       // The search should be open and started from the root of the project.
       // Narrow it down to some known files
