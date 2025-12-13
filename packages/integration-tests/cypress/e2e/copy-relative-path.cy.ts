@@ -42,7 +42,7 @@ describe("my_copy_relative_path integrations", () => {
 
       cy.typeIntoTerminal(" /")
       isSearchVisible()
-      cy.typeIntoTerminal("hello from the test", { delay: 10 }) // this very test file
+      nvim.runExCommand({ command: "normal! ihello from the test" })
 
       cy.contains("copy-relative-path.cy")
       // wait for the file to be selected
