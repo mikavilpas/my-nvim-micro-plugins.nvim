@@ -85,6 +85,6 @@ export default typescriptEslint.config(
     },
   },
 
-  ...oxlint.configs["flat/recommended"],
+  ...oxlint.buildFromOxlintConfigFile("./.oxlintrc.json"),
   eslintConfigPrettier,
 )
