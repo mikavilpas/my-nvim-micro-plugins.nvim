@@ -1,5 +1,3 @@
-import z from "zod"
-
 describe("the healthcheck", () => {
   it("can run the :healthcheck", () => {
     cy.visit("/")
@@ -10,10 +8,14 @@ describe("the healthcheck", () => {
       nvim.runExCommand({ command: "checkhealth my-nvim-micro-plugins" })
 
       // the version of the plugin should be shown
-      cy.readFile("../../.release-please-manifest.json").then(
-        (manifest: unknown) => {
-          const version = z.object({ ".": z.string() }).parse(manifest)
-          cy.contains(`Running version ${version["."]}`)
+      cy.readFile("../../lua/my-nvim-micro-plugins.lua").then(
+        (luaFile: string) => {
+          const match = luaFile.match(/M\.version\s*=\s*"([^"]+)"/)
+          if (!match) {
+            throw new Error("Could not find version in lua file")
+          }
+          const version = match[1]
+          cy.contains(`Running version ${version}`)
         },
       )
 
