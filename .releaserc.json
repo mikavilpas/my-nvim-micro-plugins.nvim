@@ -3,19 +3,6 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "sed -i 's/M.version = \".*\"/M.version = \"${nextRelease.version}\"/' lua/my-nvim-micro-plugins.lua"
-      }
-    ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["lua/my-nvim-micro-plugins.lua"],
-        "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-      }
-    ],
     "@semantic-release/github"
   ]
 }
