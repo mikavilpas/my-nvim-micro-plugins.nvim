@@ -16,6 +16,7 @@ export default typescriptEslint.config(
   },
   typescriptEslint.configs.recommended,
   typescriptEslint.configs.recommendedTypeChecked,
+  typescriptEslint.configs.strictTypeChecked,
   {
     plugins: {
       "no-only-tests": noOnlyTests,
