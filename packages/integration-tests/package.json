@@ -10,10 +10,8 @@
     "dev:client": "vite",
     "lint": "pnpx oxlint --type-aware && eslint --max-warnings=0 ."
   },
-  "dependencies": {
-    "@catppuccin/palette": "1.7.1"
-  },
   "devDependencies": {
+    "@catppuccin/palette": "1.7.1",
     "@tui-sandbox/library": "12.3.0",
     "assert": "2.1.0",
     "concurrently": "9.2.1",
