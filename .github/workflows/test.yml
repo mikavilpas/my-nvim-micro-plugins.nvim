@@ -27,11 +27,11 @@ jobs:
           ubi --project mikefarah/yq
 
           # fd is used for searching files
-          VERSION=$(yq '.tools."ubi:sharkdp/fd"' .mise.toml)
+          VERSION=$(yq '.tools."github:sharkdp/fd"' mise.toml)
           ubi --project sharkdp/fd --tag "v$VERSION"
 
           # ripgrep is a snacks.nvim grep dependency
-          VERSION=$(yq '.tools."ubi:BurntSushi/ripgrep".version' .mise.toml)
+          VERSION=$(yq '.tools."github:BurntSushi/ripgrep".version' mise.toml)
           ubi --project BurntSushi/ripgrep --tag "$VERSION" --exe rg
 
           # realpath is used to resolve relative paths
