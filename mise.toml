@@ -5,4 +5,4 @@
 "github:junegunn/fzf" = "0.70.0"
 "github:BurntSushi/ripgrep" = { version = "15.1.0", exe = "rg" }
 "github:JohnnyMorganz/stylua" = "2.4.0"
-actionlint = "1.7.11"
+actionlint = "1.7.12"
