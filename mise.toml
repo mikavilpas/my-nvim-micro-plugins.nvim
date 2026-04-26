@@ -2,7 +2,7 @@
 [tools]
 # fd is a dependency of telescope and fzf-lua
 "github:sharkdp/fd" = "10.4.2"
-"github:junegunn/fzf" = "0.71.0"
+"github:junegunn/fzf" = "0.72.0"
 "github:BurntSushi/ripgrep" = { version = "15.1.0", exe = "rg" }
 "github:JohnnyMorganz/stylua" = "2.4.1"
 actionlint = "1.7.12"
