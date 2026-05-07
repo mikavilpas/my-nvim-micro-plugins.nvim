@@ -1,9 +1,6 @@
 packages:
   - packages/*
-
-onlyBuiltDependencies:
-  - core-js
-  - cypress
-  - esbuild
-  - node-pty
-  - puppeteer
+allowBuilds:
+  cypress: true
+  esbuild: true
+saveExact: true
