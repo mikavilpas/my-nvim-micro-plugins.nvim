@@ -5,5 +5,5 @@
 "github:junegunn/fzf" = "0.72.0"
 "github:BurntSushi/ripgrep" = { version = "15.1.0", exe = "rg" }
 "github:JohnnyMorganz/stylua" = "2.5.2"
-"github:rvben/rumdl" = "0.1.93"
+"github:rvben/rumdl" = "0.1.94"
 actionlint = "1.7.12"
