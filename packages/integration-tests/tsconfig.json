@@ -10,6 +10,7 @@
     "allowImportingTsExtensions": true,
     "outDir": "dist",
     "lib": ["ES2023", "ESNext.Disposable"],
+    "types": ["cypress", "node"],
 
     /* Linting */
     "strict": true,
