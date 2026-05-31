@@ -13,9 +13,10 @@
   "devDependencies": {
     "@catppuccin/palette": "1.8.0",
     "@tui-sandbox/library": "12.5.4",
+    "@types/node": "24.12.4",
     "assert": "2.1.0",
     "concurrently": "10.0.0",
-    "cypress": "15.15.0",
+    "cypress": "15.16.0",
     "eslint": "10.4.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-no-only-tests": "3.4.0",
