@@ -23,6 +23,7 @@ import type {
   TestDirectory,
 } from "@tui-sandbox/library/server"
 import type { OverrideProperties } from "type-fest"
+
 import type {
   MyNeovimAppName,
   MyTestDirectory,
@@ -117,7 +118,8 @@ export type MyStartNeovimServerArguments = OverrideProperties<
   {
     NVIM_APPNAME?: MyNeovimAppName
     filename?:
-      MyTestDirectoryFile | { openInVerticalSplits: MyTestDirectoryFile[] }
+      | MyTestDirectoryFile
+      | { openInVerticalSplits: MyTestDirectoryFile[] }
     startupScriptModifications?: Array<
       MyNeovimConfigModification<MyTestDirectoryFile>
     >

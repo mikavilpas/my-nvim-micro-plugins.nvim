@@ -1,4 +1,5 @@
 import assert from "assert"
+
 import { isSearchVisible } from "./utils/search-utils"
 
 describe("my_copy_relative_path integrations", () => {
