@@ -117,8 +117,7 @@ export type MyStartNeovimServerArguments = OverrideProperties<
   {
     NVIM_APPNAME?: MyNeovimAppName
     filename?:
-      | MyTestDirectoryFile
-      | { openInVerticalSplits: MyTestDirectoryFile[] }
+      MyTestDirectoryFile | { openInVerticalSplits: MyTestDirectoryFile[] }
     startupScriptModifications?: Array<
       MyNeovimConfigModification<MyTestDirectoryFile>
     >
