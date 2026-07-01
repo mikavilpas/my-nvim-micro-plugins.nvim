@@ -42,8 +42,6 @@ jobs:
               https://raw.githubusercontent.com/houseabsolute/ubi/master/bootstrap/bootstrap-ubi.sh |
               TARGET="$HOME/.local/bin" sh
 
-          ubi --project mikefarah/yq
-
           # fd is used for searching files
           VERSION=$(yq '.tools."github:sharkdp/fd"' mise.toml)
           ubi --project sharkdp/fd --tag "v$VERSION"
