@@ -1,6 +1,6 @@
 import assert from "assert"
 
-import { isSearchVisible } from "./utils/search-utils"
+import { isSearchVisible } from "./utils/search-utils.js"
 
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current file search result", () => {
