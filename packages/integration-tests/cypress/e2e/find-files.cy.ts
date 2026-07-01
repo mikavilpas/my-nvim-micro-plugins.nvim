@@ -1,4 +1,4 @@
-import { isSearchVisible } from "./utils/search-utils"
+import { isSearchVisible } from "./utils/search-utils.js"
 
 describe("finding files", () => {
   it("can find files in the entire project", () => {
