@@ -16,7 +16,7 @@
     "@types/node": "24.13.2",
     "assert": "2.1.0",
     "concurrently": "10.0.3",
-    "cypress": "15.18.0",
+    "cypress": "15.18.1",
     "eslint": "10.6.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-no-only-tests": "3.4.0",
