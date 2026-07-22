@@ -1,6 +1,3 @@
 # https://github.com/mikavilpas/*/assets/ URLs time out
 # https://github.com/mikavilpas/*/compare/ URLs aren't valid until a release is published
-exclude = [
-  "https://github.com/mikavilpas/.+/assets/.*",
-  "https://github.com/mikavilpas/.+/compare/\\w+",
-]
+exclude = ["https://github.com/mikavilpas/.+/assets/.*", "https://github.com/mikavilpas/.+/compare/\\w+"]

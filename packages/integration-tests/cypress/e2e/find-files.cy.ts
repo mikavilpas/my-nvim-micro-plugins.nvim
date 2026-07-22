@@ -3,7 +3,7 @@ import { isSearchVisible } from "./utils/search-utils.js"
 describe("finding files", () => {
   it("can find files in the entire project", () => {
     cy.visit("/")
-    cy.startNeovim().then((nvim) => {
+    cy.startNeovim().then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -16,17 +16,13 @@ describe("finding files", () => {
       // Narrow it down to the TestDirectory because the file names are
       // statically known and easier to maintain
       cy.typeIntoTerminal("routes")
-      cy.contains(
-        nvim.dir.contents.routes.contents["posts.$postId"].contents[
-          "adjacent-file.txt"
-        ].name,
-      )
+      cy.contains(nvim.dir.contents.routes.contents["posts.$postId"].contents["adjacent-file.txt"].name)
     })
   })
 
   it("starts the search with the selected text", () => {
     cy.visit("/")
-    cy.startNeovim().then((_nvim) => {
+    cy.startNeovim().then(_nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
       cy.typeIntoTerminal("ccadjacent")

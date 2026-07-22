@@ -22,27 +22,16 @@ export const lightBackgroundColors = {
 
 export type Color = typeof darkTheme.text.rgb
 
-export function hasColor(
-  text: string,
-  color: Color,
-): Cypress.Chainable<undefined> {
+export function hasColor(text: string, color: Color): Cypress.Chainable<undefined> {
   return cy.contains(text).should("have.css", "color", rgbify(color))
 }
 
 // only works for the dark colorscheme for now
 export function isHoveredInNeovim(text: string, color?: string): void {
-  cy.contains(text).should(
-    "have.css",
-    "background-color",
-    color ?? darkBackgroundColors.hovered,
-  )
+  cy.contains(text).should("have.css", "background-color", color ?? darkBackgroundColors.hovered)
 }
 
 // only works for the dark colorscheme for now
 export function isNotHoveredInNeovim(text: string): void {
-  cy.contains(text).should(
-    "have.css",
-    "background-color",
-    darkBackgroundColors.normal,
-  )
+  cy.contains(text).should("have.css", "background-color", darkBackgroundColors.normal)
 }

@@ -5,7 +5,7 @@ import { isSearchVisible } from "./utils/search-utils.js"
 describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current file search result", () => {
     cy.visit("/")
-    cy.startNeovim().then((nvim) => {
+    cy.startNeovim().then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -13,11 +13,7 @@ describe("my_copy_relative_path integrations", () => {
       isSearchVisible()
 
       // The search should be open and started from the root of the project.
-      cy.typeIntoTerminal(
-        nvim.dir.contents.routes.contents["posts.$postId"].contents[
-          "adjacent-file.txt"
-        ].name,
-      )
+      cy.typeIntoTerminal(nvim.dir.contents.routes.contents["posts.$postId"].contents["adjacent-file.txt"].name)
       // wait for the file to be selected
       isSearchVisible()
 
@@ -26,10 +22,8 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("🔎").should("not.exist")
 
       // the relative path should be copied to the register
-      nvim.runExCommand({ command: "register z" }).then((output) => {
-        expect(output.value).to.contain(
-          "../../routes/posts.$postId/adjacent-file.txt",
-        )
+      nvim.runExCommand({ command: "register z" }).then(output => {
+        expect(output.value).to.contain("../../routes/posts.$postId/adjacent-file.txt")
       })
     })
   })
@@ -37,7 +31,7 @@ describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to the current grep search result", () => {
     //
     cy.visit("/")
-    cy.startNeovim().then((nvim) => {
+    cy.startNeovim().then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -53,7 +47,7 @@ describe("my_copy_relative_path integrations", () => {
       cy.typeIntoTerminal("{control+y}")
 
       // The relative path should be copied to the clipboard. Paste it
-      nvim.runExCommand({ command: "register z" }).then((output) => {
+      nvim.runExCommand({ command: "register z" }).then(output => {
         expect(output.value).to.contain(
           // line numbers should have been removed
           "../../../cypress/e2e/copy-relative-path.cy",
@@ -65,7 +59,7 @@ describe("my_copy_relative_path integrations", () => {
   it("can copy the relative path to multiple grep search results", () => {
     //
     cy.visit("/")
-    cy.startNeovim().then((nvim) => {
+    cy.startNeovim().then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -73,15 +67,8 @@ describe("my_copy_relative_path integrations", () => {
       isSearchVisible()
       cy.typeIntoTerminal("file.txt$") // this very test file
 
-      cy.contains(
-        nvim.dir.contents["other-subdirectory"].contents["other-sub-file.txt"]
-          .name,
-      )
-      cy.contains(
-        nvim.dir.contents.routes.contents["posts.$postId"].contents[
-          "adjacent-file.txt"
-        ].name,
-      )
+      cy.contains(nvim.dir.contents["other-subdirectory"].contents["other-sub-file.txt"].name)
+      cy.contains(nvim.dir.contents.routes.contents["posts.$postId"].contents["adjacent-file.txt"].name)
 
       // select the files and verify they are selected
       cy.typeIntoTerminal("{control+i}")
@@ -92,28 +79,23 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("🔎").should("not.exist")
 
       // The relative path should be copied to the clipboard.
-      nvim
-        .runLuaCode({ luaCode: `return vim.fn.getreg("z")` })
-        .then((output) => {
-          const result = output.value
+      nvim.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then(output => {
+        const result = output.value
 
-          assert(result)
-          assert(typeof result === "string")
+        assert(result)
+        assert(typeof result === "string")
 
-          const lines = result.split("\n").toSorted()
-          expect(lines.join("\n")).to.eql(
-            [
-              "../../other-subdirectory/other-sub-file.txt",
-              "../../routes/posts.$postId/adjacent-file.txt",
-            ].join("\n"),
-          )
-        })
+        const lines = result.split("\n").toSorted()
+        expect(lines.join("\n")).to.eql(
+          ["../../other-subdirectory/other-sub-file.txt", "../../routes/posts.$postId/adjacent-file.txt"].join("\n"),
+        )
+      })
     })
   })
 
   it("supports multiple file results", () => {
     cy.visit("/")
-    cy.startNeovim().then((nvim) => {
+    cy.startNeovim().then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("If you see this text, Neovim is ready!")
 
@@ -123,16 +105,8 @@ describe("my_copy_relative_path integrations", () => {
       // The search should be open and started from the root of the project.
       // Narrow it down to some known files
       cy.typeIntoTerminal("posts.postId/.txt", { delay: 100 })
-      cy.contains(
-        nvim.dir.contents.routes.contents["posts.$postId"].contents[
-          "adjacent-file.txt"
-        ].name,
-      )
-      cy.contains(
-        nvim.dir.contents.routes.contents["posts.$postId"].contents[
-          "should-be-excluded-file.txt"
-        ].name,
-      )
+      cy.contains(nvim.dir.contents.routes.contents["posts.$postId"].contents["adjacent-file.txt"].name)
+      cy.contains(nvim.dir.contents.routes.contents["posts.$postId"].contents["should-be-excluded-file.txt"].name)
 
       // Select the files. They should have a new color after this to indicate
       // they are selected
@@ -146,16 +120,14 @@ describe("my_copy_relative_path integrations", () => {
       cy.contains("🔎").should("not.exist")
 
       // The relative path should be copied to the clipboard.
-      nvim
-        .runLuaCode({ luaCode: `return vim.fn.getreg("z")` })
-        .then((output) => {
-          expect(output.value).to.eql(
-            [
-              "../../routes/posts.$postId/adjacent-file.txt",
-              "../../routes/posts.$postId/should-be-excluded-file.txt",
-            ].join("\n"),
-          )
-        })
+      nvim.runLuaCode({ luaCode: `return vim.fn.getreg("z")` }).then(output => {
+        expect(output.value).to.eql(
+          [
+            "../../routes/posts.$postId/adjacent-file.txt",
+            "../../routes/posts.$postId/should-be-excluded-file.txt",
+          ].join("\n"),
+        )
+      })
     })
   })
 })
