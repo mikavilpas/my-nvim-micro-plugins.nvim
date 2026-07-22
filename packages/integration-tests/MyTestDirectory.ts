@@ -99,11 +99,8 @@ export const MyTestDirectorySchema = z.object({
   }),
 })
 
-export const MyTestDirectoryContentsSchema =
-  MyTestDirectorySchema.shape.contents
-export type MyTestDirectoryContentsSchemaType = z.infer<
-  typeof MyTestDirectorySchema
->
+export const MyTestDirectoryContentsSchema = MyTestDirectorySchema.shape.contents
+export type MyTestDirectoryContentsSchemaType = z.infer<typeof MyTestDirectorySchema>
 
 export type MyTestDirectory = MyTestDirectoryContentsSchemaType["contents"]
 

@@ -4,6 +4,7 @@
   "private": true,
   "description": "Some utilities that I use in my nvim config",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "cy:run": "pnpm --filter ./packages/integration-tests/ cy:run",
     "dev": "pnpm --filter integration-tests dev",
@@ -13,6 +14,7 @@
     "tui": "pnpm --filter ./packages/integration-tests/ exec tui"
   },
   "devDependencies": {
+    "@mikavilpas/oxfmt-config": "3.0.0",
     "oxfmt": "0.59.0"
   },
   "packageManager": "pnpm@11.15.0"
