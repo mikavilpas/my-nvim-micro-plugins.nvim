@@ -1,10 +1,10 @@
-describe("multicursor-nvim integration", () => {
-  function redraw() {
-    // there are some bugs with the terminal right now and this seems to work
-    // around them
-    cy.typeIntoTerminal("{control+l}")
-  }
+const redraw = (): void => {
+  // there are some bugs with the terminal right now and this seems to work
+  // around them
+  cy.typeIntoTerminal("{control+l}")
+}
 
+describe("multicursor-nvim integration", () => {
   it("can add to the start of lines", () => {
     cy.visit("/")
     cy.startNeovim({ filename: "multicursor-file.lua" }).then(() => {
