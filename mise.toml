@@ -1,4 +1,3 @@
-
 [tools]
 # fd is a dependency of telescope and fzf-lua
 "github:sharkdp/fd" = "10.5.0"
@@ -6,4 +5,4 @@
 "github:BurntSushi/ripgrep" = { version = "15.2.0", exe = "rg" }
 "github:JohnnyMorganz/stylua" = "2.5.2"
 "github:rvben/rumdl" = "0.2.77"
-actionlint = "1.7.12"
+"github:kjanat/actionlint" = "1.17.0"
