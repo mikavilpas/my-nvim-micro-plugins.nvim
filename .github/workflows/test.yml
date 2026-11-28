@@ -49,34 +49,23 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install tools with UBI
+      - name: Verify realpath is installed
         shell: bash
         run: |
-          mkdir -p "$HOME/.local/bin"
-          # make the tools available for subsequent steps
-          echo "$(pwd)/bin" >> "$GITHUB_PATH"
-          curl --silent --location \
-              https://raw.githubusercontent.com/houseabsolute/ubi/master/bootstrap/bootstrap-ubi.sh |
-              TARGET="$HOME/.local/bin" sh
-
-          # fd is used for searching files
-          VERSION=$(yq '.tools."github:sharkdp/fd"' mise.toml)
-          ubi --project sharkdp/fd --tag "v$VERSION"
-
-          # ripgrep is a snacks.nvim grep dependency
-          VERSION=$(yq '.tools."github:BurntSushi/ripgrep".version' mise.toml)
-          ubi --project BurntSushi/ripgrep --tag "$VERSION" --exe rg
-
           # realpath is used to resolve relative paths
           which realpath || {
             # just fail with an error message if realpath is not found
             echo "realpath is not installed, but it should be part of GNU coreutils and included in Ubuntu"
             exit 1
           }
-
-          ls -alR bin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
+        with:
+          # fd is used for searching files
+          # ripgrep is a snacks.nvim grep dependency
+          install_args: github:sharkdp/fd github:BurntSushi/ripgrep
 
       - name: Download pinned Neovim nightly
         uses: mikavilpas/neovim-action/restore-nightly@4f1c9a2235ee7428930602c0ba3e4f20377b61d8 # v3.3.0
