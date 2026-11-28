@@ -65,7 +65,7 @@ jobs:
         with:
           # fd is used for searching files
           # ripgrep is a snacks.nvim grep dependency
-          install_args: github:sharkdp/fd github:BurntSushi/ripgrep
+          install_args: github:sharkdp/fd ripgrep
 
       - name: Download pinned Neovim nightly
         uses: mikavilpas/neovim-action/restore-nightly@4f1c9a2235ee7428930602c0ba3e4f20377b61d8 # v3.3.0
